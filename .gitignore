@@ -3,3 +3,5 @@ bundle.js
 bundle.js.map
 package.json
 .DS_Store
+tmp/
+log/
