@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
    render json: {base: ['invalid credentials']}, status: 401 if !current_user
   end
 
+  def user_params
+		params.require(:user).permit(:username, :password)
+	end
+
 end
