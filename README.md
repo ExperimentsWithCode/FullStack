@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## To get started, run the following
+  npm install --save webpack react react-dom react-router redux react-redux babel-core babel-loader babel-preset-react babel-preset-es2015 redux-thunk
 
-Things you may want to cover:
+  bundle install
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  bundle exec rake db:setup

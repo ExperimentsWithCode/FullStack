@@ -1,10 +1,18 @@
 class User < ActiveRecord::Base
 
   attr_reader :password
+  attr_reader :confirm
 
-  validates :username, :email, :session_token, presence: true, uniqueness: true
-  validates :password_digest, presence: true,
-  validates :password length: {minimum:6, allow_nil: true }
+  validates :username, :email, presence: true, uniqueness: true
+  validates :password_digest, presence: true
+  validates :password, length: {minimum:6, allow_nil: true }
+
+  def password_equals_confirm
+    if self.password != self.confirm
+      errors.add(:confirm, "Must match password")
+    end
+  end
+
 
   def self.find_by_credentials username, password
     user = User.find_by(username: username)
