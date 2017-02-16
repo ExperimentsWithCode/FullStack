@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
 
 	def create
-		# debugger
 		@user = User.new(user_params)
 		@user.reset_session_token!
 		if @user.save
