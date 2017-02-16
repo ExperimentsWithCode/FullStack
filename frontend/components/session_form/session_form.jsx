@@ -8,8 +8,14 @@ class SessionForm extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	componentWillReceiveProps(newProps){
+		if (newProps.route === this.props.route){
+			this.state = { username: "", password: "", email:""};
+		}
+	}
 	componentDidUpdate() {
 		this.redirectIfLoggedIn();
+		// this.state = { username: "", password: "", email:""};
 	}
 
 	redirectIfLoggedIn() {
@@ -88,10 +94,11 @@ class SessionForm extends React.Component {
 	render() {
 		return (
 			<div className="content">
-				<div className="sub-header">
-					{this.navLink()}
-				</div>
+
 				<div className="login-form-container">
+					<div className="sub-header">
+						{this.navLink()}
+					</div>
 					<h2>{"Create your Heap Spill account. It's free and only takes a minute."}</h2>
 					<form onSubmit={this.handleSubmit} className="login-form-box">
 
