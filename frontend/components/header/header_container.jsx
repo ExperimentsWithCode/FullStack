@@ -4,14 +4,19 @@ import HeaderDisplay from './header_display';
 
 
 const mapStateToProps = ({ session }) => {
-  return {currentUser: session.currentUser,
+  return {
+    currentUser: session.currentUser,
     loggedIn: Boolean(session.currentUser),
-    errors: session.errors}
+    errors: session.errors,
+    path: location.hash.slice(1)
+  }
 };
 
-const mapDispatchToProps = (dispatch, { location }) => ({
-  logout: () => dispatch(logout())
-});
+const mapDispatchToProps = (dispatch, { location })  => {
+  return {
+    logout: () => dispatch(logout()),
+  }
+};
 
 export default connect(
   mapStateToProps,
