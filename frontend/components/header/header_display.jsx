@@ -40,7 +40,6 @@ const headerLoggedIn = (currentUser, logout) => (
 //
 // const returnExtendedHeader = (currentUser, path) => {
 //   if (path !== "/login" || path !=="/signup" || !currentUser){
-//     debugger
 //
 //     return extendedHeader()
 //   }
@@ -66,7 +65,6 @@ const headerMain = (currentUser, logout, path) => (
 );
 
 const header = ({currentUser, logout, errors, path}) => {
-  debugger
   return headerMain(currentUser, logout, path);
 };
 
