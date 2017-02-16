@@ -8,8 +8,14 @@ class SessionForm extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	componentWillReceiveProps(newProps){
+		if (newProps.route === this.props.route){
+			this.state = { username: "", password: "", email:""};
+		}
+	}
 	componentDidUpdate() {
 		this.redirectIfLoggedIn();
+		// this.state = { username: "", password: "", email:""};
 	}
 
 	redirectIfLoggedIn() {
@@ -23,7 +29,12 @@ class SessionForm extends React.Component {
 			[field]: e.currentTarget.value
 		});
 	}
-
+	setGuest() {
+		return e => this.setState({
+			"username": "guest-user",
+			"password": "1Y4xNQBhe1KS8vOJpHdB9A"
+		});
+	}
 	handleSubmit(e) {
 		e.preventDefault();
 		const user = this.state;
@@ -32,11 +43,22 @@ class SessionForm extends React.Component {
 
 	navLink() {
 		if (this.props.formType === "login") {
-			return <Link to="/signup">sign up instead</Link>;
+			return (
+				<div id="tabs">
+					<Link to="/login" className="tab active">Log In</Link>
+					<Link to="/signup" className="tab">Sign Up</Link>
+				</div>
+			)
 		} else {
-			return <Link to="/login">log in instead</Link>;
+			return (
+				<div id="tabs">
+					<Link to="/login" className="tab">Log In</Link>
+					<Link to="/signup" className="tab active">Sign Up</Link>
+				</div>
+			)
 		}
 	}
+
 
 	renderErrors() {
 		return(
@@ -49,49 +71,59 @@ class SessionForm extends React.Component {
 			</ul>
 		);
 	}
+
+	renderGuest() {
+		if (this.props.formType === "login"){
+			return <button type="button" className="submit special" onClick={this.setGuest()}>Guest</button>
+		} else { return "" }
+	}
+
 	renderAdditionalSignupFields() {
 		if (this.props.formType === "signup"){
 			return(
-				<div>
-					<br/>
-					<label> Email:
-						<input type="text"
-							value={this.state.email}
-							onChange={this.update("email")}
-							className="login-input" />
-					</label>
-				</div>
+				<label> Email:<br/>
+					<input type="text"
+						value={this.state.email}
+						onChange={this.update("email")}
+						className="login-input" />
+				</label>
 			);
 		} else { return "" }
 	}
+
 	render() {
 		return (
-			<div className="login-form-container">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
-					Welcome to HeapSpill!
-					<br/>
-					Please {this.props.formType} or {this.navLink()}
-					{this.renderErrors()}
-					<div className="login-form">
-						<br/>
-						<label> Username:
-							<input type="text"
-								value={this.state.username}
-								onChange={this.update("username")}
-								className="login-input" />
-						</label>
-						<br/>
-						<label> Password:
-							<input type="password"
-								value={this.state.password}
-								onChange={this.update("password")}
-								className="login-input" />
-						</label>
-						{  this.renderAdditionalSignupFields() }
-						<br/>
-						<input type="submit" value="Submit" />
+			<div className="content">
+
+				<div className="login-form-container">
+					<div className="sub-header">
+						{this.navLink()}
 					</div>
-				</form>
+					<h2>{"Create your Heap Spill account. It's free and only takes a minute."}</h2>
+					<form onSubmit={this.handleSubmit} className="login-form-box">
+
+						<div className="login-form">
+
+							<label> Display Name:<br/>
+								<input type="text"
+									value={this.state.username}
+									onChange={this.update("username")}
+									className="login-input" />
+							</label>
+
+							<label> Password:<br/>
+								<input type="password"
+									value={this.state.password}
+									onChange={this.update("password")}
+									className="login-input" />
+							</label>
+							{  this.renderAdditionalSignupFields() }
+							<br/>
+							<input type="submit" value="Submit" className="submit"/>&nbsp;&nbsp;
+							{this.renderGuest()}
+						</div>
+					</form>
+				</div>
 			</div>
 		);
 	}

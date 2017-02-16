@@ -6,3 +6,6 @@
   bundle install
 
   bundle exec rake db:setup
+
+## To view site visit
+https://heapspill.herokuapp.com/

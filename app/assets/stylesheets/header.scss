@@ -1,0 +1,119 @@
+.data-reactroot{
+  width:100%;
+  position: fixed;
+  min-width: auto;
+}
+
+.header-group{
+  align:center;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  flex-direction: row;
+  position:fixed;
+  min-width: auto;
+  white-space: nowrap;
+  width:90%;
+  max-width:1080px;
+  top:0;
+  z-index: 1000;
+  height: 60px;
+  margin: 0 1% 0 1%;
+}
+
+.header-wrapper {
+    height: 100%;
+    width: 100%;
+    height: 60px;
+    z-index: 998;
+    &.fixed{
+      background-color:#fafafb;
+      border-top:3px solid #F48024;
+      box-sizing: border-box;
+      position:fixed;
+      z-index: 999;
+      box-shadow:0 1px 0 rgba(12,13,14,0.15);
+      transition: background-color cubic-bezier(.165, .84, .44, 1) .25;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      flex-direction: row;
+    }
+}
+
+.button-session{
+  margin-right: 3%;
+  background: #07C;
+  font-weight: bold;
+  color: #FFF;
+  // width: 120px;
+  padding: 12px ;
+  border-style:none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  &.link{
+    width:100%;
+  }
+  &.button{
+    margin-right:10px;
+  }
+}
+
+.header-group-left{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.header-group-right{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-direction: row;
+}
+
+.link-login, .header-user{
+  margin-right: 10%;
+}
+
+.extended-header{
+  color: #464e55;
+  align: center;
+  width:90%;
+  max-width:1080px;
+  height:auto;
+  margin: 40px auto;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #F48024;
+  &.content {
+    border-style: none;
+    width: 400px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+  }
+}
+
+.separator{
+  width: 25px;
+  border-bottom: 3px solid #464e55;
+  margin: 10px auto;
+  display:block;
+}
+
+.blurb{
+  font-size: 103%;
+  word-spacing: 2px;
+  line-height: 145%;
+  margin-bottom: 25px;
+}
+// color: #FFF;
+// background-color: #0095ff;
+// border-color: #07c;
+// box-shadow: inset 0 1px 0 #66bfff;
