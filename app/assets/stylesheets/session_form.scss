@@ -1,5 +1,12 @@
 .content{
-  width: 100%;
+  align:center;
+  width:80%;
+  max-width:960px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: row;
+  margin: 0 auto;
 }
 
 .header-group{
@@ -9,8 +16,9 @@
   width:100%;
   margin: 3%;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content: flex-start;
+  margin-top:80px;
 }
 
 .tabs{
@@ -20,11 +28,13 @@
   padding: 13px 10px;
   border-style: none;
   cursor: pointer;
+  color:#848d95;
   &.active{
     border:1px solid;
     border-color:#e4e6e8;
     border-top-color:#f69c55;
     border-bottom-color: transparent;
+    color:#242729;
   }
 }
 
@@ -34,6 +44,7 @@
   align-items:center;
   justify-content:center;
   flex-direction: column;
+  width: 100%
 }
 
 .login-form-box{
