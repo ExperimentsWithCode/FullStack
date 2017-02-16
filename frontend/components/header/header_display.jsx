@@ -6,10 +6,10 @@ const headerLoggedOut = () => (
     <Link to="/" className="link header">
       <h1>HeapSpill</h1>
     </Link>
-    <Link to="/login" className="link login">
+    <Link to="/login" className="link-login">
       <p>Login</p>
     </Link>
-    <Link to="/signup" className="link signup">
+    <Link to="/signup" className="link-signup">
       <p>Sign Up</p>
     </Link>
   </hgroup>
