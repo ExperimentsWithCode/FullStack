@@ -36,10 +36,11 @@ export const destroy = currentQuestion => dispatch => (
       err => dispatch(receiveErrors(err.responseJSON)))
 );
 
-export const receiveCurrentQuestion = currentQuestion => ({
+export const receiveCurrentQuestion = currentQuestion => {
+  return {
   type: RECEIVE_CURRENT_QUESTION,
-  currentQuestion
-});
+  currentQuestion};
+};
 
 export const receiveQuestions = Questions => ({
   type: RECEIVE_QUESTIONS,

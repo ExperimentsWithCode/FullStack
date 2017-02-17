@@ -3,7 +3,7 @@ class Api::QuestionsController < ApplicationController
 	def create
 		@question = Question.new(question_params)
 		if @question.save
-			render api_question_url
+			render :show
 		else
 			render json: @question.errors.full_messages, status: 422
 		end
@@ -12,7 +12,7 @@ class Api::QuestionsController < ApplicationController
 	def update
 		@question = Question.find(params[:id])
 		if @question.update_attributes(question_params)
-			render api_question_url
+			render api_question_url+"/#{@question.id}"
 		else
 			render json: @question.errors.full_messages, status: 422
 		end
@@ -21,13 +21,12 @@ class Api::QuestionsController < ApplicationController
 	def index
 		@questions = Question.all()
 		render api_questions_url
-		end
 	end
 
 	def show
 		@question = Question.find(params[:id])
 		unless @question.nil?
-			render api_question_url
+			render api_question_url+"/#{@question.id}"
 		else
 			render json: @question.errors.full_messages, status: 422
 		end
@@ -36,7 +35,7 @@ class Api::QuestionsController < ApplicationController
 	def destroy
 		@question = Question.find(params[:id])
 		if @question.destroy
-			render api_question_url
+			render :show
 		else
 			render json: @question.errors.full_messages, status: 422
 		end
