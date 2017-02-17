@@ -8,6 +8,8 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './App';
 import SessionFormContainer from './session_form/session_form_container';
 import AskQuestionContainer from './ask_question/ask_question_container';
+import QuestionsContainer from './questions/questions_container';
+
 
 
 const Root = ({ store }) => {

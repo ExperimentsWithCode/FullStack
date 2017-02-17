@@ -52,23 +52,23 @@ class AskQuestionDisplay extends React.Component {
 	render() {
 		return (
       <div className="container">
-			<div className="ask_content">
-        <form onSubmit={this.handleSubmit} className="question-form">
-					{this.renderErrors()}
-					<div className="question-title-input" >
-						<label> Title</label>
-						<input type="text"
-							value={this.state.title}
-							onChange={this.update("title")} />
-					</div>
+				<div className="ask_content">
+	        <form onSubmit={this.handleSubmit} className="question-form">
+						{this.renderErrors()}
+						<div className="question-title-input" >
+							<label> Title</label>
+							<input type="text"
+								value={this.state.title}
+								onChange={this.update("title")} />
+						</div>
 
-					<div className="question-body-input" >
-						<textarea className="question-body-textarea" rows="10" onChange={this.update("body")} value={this.state.body}>
-						</textarea>
-					</div>
-					<input type="submit" value="Post Your Question" className="submit question"/>
-        </form>
-      </div>
+						<div className="question-body-input" >
+							<textarea className="question-body-textarea" rows="10" onChange={this.update("body")} value={this.state.body}>
+							</textarea>
+						</div>
+						<input type="submit" value="Post Your Question" className="submit question"/>
+	        </form>
+	      </div>
       </div>
 		);
 	}
