@@ -5,9 +5,10 @@ import AskQuestionDisplay from './ask_question_display';
 
 const mapStateToProps = ({ session }) => {
   const current_user = session.currentUser
+  debugger
   return {
-  loggedIn: Boolean(session.currentUser),
-  errors: session.errors,
+  loggedIn: Boolean(currentUser),
+  errors: session.errors || [],
   current_user: current_user};
 };
 

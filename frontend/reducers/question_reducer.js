@@ -12,6 +12,8 @@ const _nullQuestion = Object.freeze({
   errors: []
 });
 
+
+
 const QuestionReducer = (state = _nullQuestion, action) => {
   Object.freeze(state);
   switch(action.type) {
