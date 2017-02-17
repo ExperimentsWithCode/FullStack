@@ -7,8 +7,8 @@ import {
 import merge from 'lodash/merge';
 
 const _nullQuestion = Object.freeze({
-  currentQuestion: null,
-  questions: null,
+  currentQuestion: {},
+  questions: {},
   errors: []
 });
 

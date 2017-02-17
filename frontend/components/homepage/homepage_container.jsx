@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { login, logout, signup } from '../../actions/session_actions';
-import HomepageDisplay from './session_form';
+import { index, create, update, show, destroy } from '../../actions/session_actions';
+import HomepageDisplay78uik from './session_form';
 
 
 const mapStateToProps = ({ session }) => ({
@@ -9,7 +9,6 @@ const mapStateToProps = ({ session }) => ({
 });
 
 const mapDispatchToProps = (dispatch, { location }) => {
-  const formType = location.pathname.slice(1);
   const processForm = (formType === 'login') ? login : signup;
 
   return {
