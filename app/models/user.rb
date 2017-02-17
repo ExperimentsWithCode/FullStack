@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: {minimum:6, allow_nil: true }
 
+  has_many(
+  :questions,
+  class_name: "Question",
+  foreign_key: :author_id,
+  primary_key: :id
+  )
+
   def password_equals_confirm
     if self.password != self.confirm
       errors.add(:confirm, "Must match password")
