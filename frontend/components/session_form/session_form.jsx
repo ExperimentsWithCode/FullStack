@@ -119,8 +119,10 @@ class SessionForm extends React.Component {
 							</label>
 							{  this.renderAdditionalSignupFields() }
 							<br/>
-							<input type="submit" value="Submit" className="submit"/>&nbsp;&nbsp;
-							{this.renderGuest()}
+							<div className="session-form-buttons">
+								<input type="submit" value="Submit" className="submit"/>
+								{this.renderGuest()}
+							</div>
 						</div>
 					</form>
 				</div>
