@@ -3,12 +3,11 @@ import { create } from '../../actions/question_actions';
 import AskQuestionDisplay from './ask_question_display';
 
 
-const mapStateToProps = ({ session }) => {
+const mapStateToProps = ({ session, question }) => {
   const current_user = session.currentUser
-  debugger
   return {
   loggedIn: Boolean(currentUser),
-  errors: session.errors || [],
+  errors: question.errors || [],
   current_user: current_user};
 };
 

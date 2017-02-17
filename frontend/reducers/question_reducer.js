@@ -2,7 +2,7 @@ import {
   RECEIVE_CURRENT_QUESTION,
   RECEIVE_QUESTIONS,
   REMOVE_CURRENT_QUESTION,
-  RECEIVE_ERRORS } from '../actions/question_actions';
+  RECEIVE_QUESTION_ERRORS } from '../actions/question_actions';
 
 import merge from 'lodash/merge';
 
@@ -27,7 +27,7 @@ const QuestionReducer = (state = _nullQuestion, action) => {
       return questions
     case REMOVE_CURRENT_QUESTION:
       return merge({}, _nullQuestion);
-    case RECEIVE_ERRORS:
+    case RECEIVE_QUESTION_ERRORS:
       const errors = action.errors;
       return merge({}, _nullQuestion, {
         errors

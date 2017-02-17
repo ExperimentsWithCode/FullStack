@@ -1,4 +1,4 @@
-import { receiveCurrentUser, receiveErrors } from '../actions/session_actions';
+import { receiveCurrentUser, receiveQuestionErrors } from '../actions/session_actions';
 
 export const index = () => {
   return $.ajax({
