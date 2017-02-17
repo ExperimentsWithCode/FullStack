@@ -21,9 +21,34 @@ body{
   &.special{
     background: #F48024;
   }
+  &.question{
+    width:auto;
+  }
 }
 
 a{
   text-decoration:none;
   color:#07C;
+}
+
+.errors {
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  flex-direction: column;
+  li{
+    color:#F48024;
+    display: list-item;
+  }
+}
+
+
+.container{
+  width:100%;
+  height:auto;
+  padding:auto;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  flex-direction: column;
 }
