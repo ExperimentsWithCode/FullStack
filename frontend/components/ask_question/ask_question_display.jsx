@@ -8,6 +8,11 @@ class AskQuestionDisplay extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	componentWillReceiveProps(newProps){
+		if (newProps.route === this.props.route){
+			this.state = { title: "", body: "", author_id: this.props.current_user.id };
+		}
+	}
 
 	componentDidUpdate() {
 		this.ensureLoggedIn();
@@ -32,7 +37,6 @@ class AskQuestionDisplay extends React.Component {
 	}
 
 	renderErrors() {
-		debugger
 		if (this.props.errors.length > 0){
 		return(
 			<ul className="errors" >
