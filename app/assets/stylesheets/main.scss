@@ -31,6 +31,13 @@ a{
   color:#07C;
 }
 
-.errors li{
-  color:#F48024;
+.errors {
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  flex-direction: column;
+  li{
+    color:#F48024;
+    display: list-item;
+  }
 }
