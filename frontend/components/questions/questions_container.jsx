@@ -11,9 +11,15 @@ const mapStateToProps = ({ session, question }) => {
   current_user: current_user};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  index: (questions) => dispatch(index())
-});
+const mapDispatchToProps = (dispatch) => {
+  const formType = location.hash.slice(2);
+
+  return {
+    index: () => dispatch(index()),
+    formType
+  };
+};
+
 
 export default connect(
   mapStateToProps,
