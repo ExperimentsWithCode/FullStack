@@ -9,11 +9,14 @@ class SessionForm extends React.Component {
 	}
 
 	componentWillReceiveProps(newProps){
-		if (newProps.route === this.props.route){
+		if (newProps.route !== this.props.route){
+			debugger
 			this.state = { username: "", password: "", email:""};
+			this.props.clear()
 		}
 	}
 	componentDidUpdate() {
+		debugger
 		this.redirectIfLoggedIn();
 		// this.state = { username: "", password: "", email:""};
 	}
@@ -96,7 +99,7 @@ class SessionForm extends React.Component {
 			<div className="content">
 
 				<div className="login-form-container">
-					<div className="sub-header">
+					<div className="sub-header-session">
 						{this.navLink()}
 					</div>
 					<h2>{"Create your Heap Spill account. It's free and only takes a minute."}</h2>
@@ -104,6 +107,7 @@ class SessionForm extends React.Component {
 
 						<div className="login-form">
 
+							{this.renderErrors()}
 							<label> Display Name:<br/>
 								<input type="text"
 									value={this.state.username}

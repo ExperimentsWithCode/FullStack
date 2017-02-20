@@ -52,8 +52,8 @@ class AskQuestionDisplay extends React.Component {
 	render() {
 		return (
       <div className="container">
-				<div className="ask_content">
-	        <form onSubmit={this.handleSubmit} className="question-form">
+				<div className="split_content">
+	        <form onSubmit={this.handleSubmit} className="main_content">
 						{this.renderErrors()}
 						<div className="question-title-input" >
 							<label> Title</label>

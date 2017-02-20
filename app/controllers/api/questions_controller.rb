@@ -20,7 +20,7 @@ class Api::QuestionsController < ApplicationController
 
 	def index
 		@questions = Question.all()
-		render api_questions_url
+		render :index
 	end
 
 	def show
