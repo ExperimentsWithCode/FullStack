@@ -19,7 +19,7 @@ class Api::QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all()
+		@questions = Question.all
 		render :index
 	end
 

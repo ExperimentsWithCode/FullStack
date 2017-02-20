@@ -10,13 +10,11 @@ class SessionForm extends React.Component {
 
 	componentWillReceiveProps(newProps){
 		if (newProps.route !== this.props.route){
-			debugger
 			this.state = { username: "", password: "", email:""};
 			this.props.clear()
 		}
 	}
 	componentDidUpdate() {
-		debugger
 		this.redirectIfLoggedIn();
 		// this.state = { username: "", password: "", email:""};
 	}
