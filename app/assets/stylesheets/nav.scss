@@ -1,0 +1,29 @@
+
+.tabs{
+  height:auto;
+  width:auto;
+  padding: 13px 0px 0px 10px;
+  margin-bottom: 0.83em;
+}
+.tab{
+  padding: 13px 10px;
+  cursor: pointer;
+  color:#848d95;
+  border: 2px solid;
+  border-color: transparent;
+  &.active{
+    border-color:#e4e6e8;
+    border-top:2px solid #f69c55;
+    border-bottom-color: white;
+    color:#242729;
+  }
+}
+
+.sub-header-content{
+  width:100%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-direction: row;
+  border-bottom:2px solid #e4e6e8;
+}

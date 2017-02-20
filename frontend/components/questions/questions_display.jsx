@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import { MainNavLink } from '../nav/main_nav_display';
 
 class QuestionsDisplay extends React.Component {
 	constructor(props) {
@@ -37,53 +38,19 @@ class QuestionsDisplay extends React.Component {
 		this.props.create(currentQuestion);
 	}
 
-	activeLink(linkPath) {
-		if (linkPath === location.hash.slice(2)){
-			return " active"
-		} else if ("questions" === location.hash.slice(2)){
-			if (linkPath === "questions/newest" ){
-				return " active"
-			}
-		}
-		return ""
-	}
 
-	navLink() {  //newest, active, featured, frequent
 
-		return (
-			<div className="tabs">
-				<Link to="questions/newest" className={`tab${this.activeLink("questions/newest")}`}>newest</Link>
-				<Link to="questions/active" className={`tab${this.activeLink("questions/active")}`}>active</Link>
-				<Link to="questions/featured" className={`tab${this.activeLink("questions/featured")}`}>featured</Link>
-				<Link to="questions/votes" className={`tab${this.activeLink("questions/votes")}`}>votes</Link>
-				<Link to="questions/frequent" className={`tab${this.activeLink("questions/frequent")}`}>frequent</Link>
-			</div>
-		);
-	}
 
-	renderErrors() {
-		if (this.props.errors.length > 0){
-		return(
-			<ul className="errors" >
-				{this.props.errors.map((error, i) => (
-					<li key={`error-${i}`}>
-						{error}
-					</li>
-				))}
-			</ul>
-		)};
-	};
 
 	render() {
 		return (
       <div className="container">
   			<div className="split_content">
-					<div className="sub-header-content">
-						<h2>All Questions</h2>
-						{this.navLink()}
-					</div>
 					<div className="main_content">
-
+						<div className="sub-header-content">
+							<h2>{location.hash.slice(2).includes("questions") ? "All Questions" : "Unanswered"}</h2>
+							<MainNavLink currentLocation={location.hash.slice(2)} />
+						</div>
 					</div>
         </div>
       </div>
