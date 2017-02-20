@@ -1,0 +1,11 @@
+.main_content{
+  width:728px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-around;
+  flex-direction: column;
+  label{
+    margin-right:5%;
+    font-weight: bold;
+  }
+}
