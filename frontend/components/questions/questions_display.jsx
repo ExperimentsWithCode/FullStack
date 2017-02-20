@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import { MainNavLink } from '../nav/main_nav_display';
+import QuestionLineItem  from './question_line_item';
 
 class QuestionsDisplay extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { questions: {} };
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.formType = this.props.formType
+		this.formType = this.props.formType;
+		this.state = this.props.questions;
 	}
 
 	componentDidMount(){
@@ -16,30 +16,32 @@ class QuestionsDisplay extends React.Component {
 
 
 	componentWillReceiveProps(newProps){
-		if (newProps.route === this.props.route){
-			this.state = { questions: {} };
-		}
+		this.state = newProps.questions;
 	}
+
 
 	componentDidUpdate() {
+
 	}
 
 
+	renderQuestionsList() {
 
-	update(field) {
-		return e => this.setState({
-			[field]: e.currentTarget.value
-		});
+		if (this.state) {
+			debugger
+			if (this.state.questions.length !== undefined ) {
+
+				const lineItems = this.state.questions.map( (question) => (< QuestionLineItem key={question.id} question={question} />));
+				debugger
+				return (
+					<ul className="questions-list">
+						{lineItems}
+					</ul>
+			);
+			}
+		}
+		return (<p> Nothing to render </p>)
 	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-		const currentQuestion = this.state;
-		this.props.create(currentQuestion);
-	}
-
-
-
 
 
 	render() {
@@ -51,6 +53,7 @@ class QuestionsDisplay extends React.Component {
 							<h2>{location.hash.slice(2).includes("questions") ? "All Questions" : "Unanswered"}</h2>
 							<MainNavLink currentLocation={location.hash.slice(2)} />
 						</div>
+						{this.renderQuestionsList()}
 					</div>
         </div>
       </div>

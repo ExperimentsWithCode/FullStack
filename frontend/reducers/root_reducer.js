@@ -8,7 +8,8 @@ import QuestionReducer from './question_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
-  question: QuestionReducer
+  question: QuestionReducer,
+  questions: QuestionReducer
 });
 
 export default RootReducer;
