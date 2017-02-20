@@ -42,9 +42,9 @@ export const receiveCurrentQuestion = currentQuestion => {
   currentQuestion};
 };
 
-export const receiveQuestions = Questions => ({
+export const receiveQuestions = questions => ({
   type: RECEIVE_QUESTIONS,
-  Questions
+  questions
 });
 
 export const removeCurrentQuestion = currentQuestion => ({
