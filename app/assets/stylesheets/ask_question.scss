@@ -1,40 +1,8 @@
 
 
-.ask_content{
-  color: #464e55;
-  align: center;
-  width:100%;
-  max-width:1080px;
-  height:auto;
-  margin: 0 1% 0 1%;
-  text-align: center;
-  box-sizing: border-box;
-  border: 1px solid #F48024;
-  padding: 24px 15px;
-  min-height: 750px;
-  overflow: visible;
 
-  &.content {
-    border-style: none;
-    width: 400px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction: column;
-  }
-}
 
-.question-form{
-  width:65%;
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-around;
-  flex-direction: column;
-  label{
-    margin-right:5%;
-    font-weight: bold;
-  }
-}
+
 .question-title-input{
   margin:5% 0;
   width:100%;

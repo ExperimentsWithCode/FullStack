@@ -12,7 +12,8 @@
 .header-group{
   width: 100%;
 }
-.sub-header{
+
+.sub-header-session{
   width:100%;
   margin: 3%;
   display:flex;
@@ -21,22 +22,6 @@
   margin-top:80px;
 }
 
-.tabs{
-  border-top:1px solid #e4e6e8;
-}
-.tab{
-  padding: 13px 10px;
-  border-style: none;
-  cursor: pointer;
-  color:#848d95;
-  &.active{
-    border:1px solid;
-    border-color:#e4e6e8;
-    border-top-color:#f69c55;
-    border-bottom-color: transparent;
-    color:#242729;
-  }
-}
 
 
 .login-form-container {
