@@ -16,7 +16,6 @@ const QuestionsCount = (questions) => {
 }
 
 export const SideNavDisplay = ({questions}) => {  //newest, active, featured, frequent
-	debugger
 	return (
 		<div className={ questions ? "sub-header-content side" : "sub-header-content"}>
 			{QuestionsCount(questions)}
