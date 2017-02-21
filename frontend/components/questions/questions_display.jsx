@@ -28,11 +28,9 @@ class QuestionsDisplay extends React.Component {
 	renderQuestionsList() {
 
 		if (this.state) {
-			debugger
 			if (this.state.questions.length !== undefined ) {
 
 				const lineItems = this.state.questions.map( (question) => (< QuestionLineItem key={question.id} question={question} />));
-				debugger
 				return (
 					<ul className="questions-list">
 						{lineItems}
@@ -50,7 +48,7 @@ class QuestionsDisplay extends React.Component {
   			<div className="split_content">
 					<div className="main_content">
 						<div className="sub-header-content">
-							<h2>{location.hash.slice(2).includes("questions") ? "All Questions" : "Unanswered"}</h2>
+							<h2>All Questions</h2>
 							<MainNavLink currentLocation={location.hash.slice(2)} />
 						</div>
 						{this.renderQuestionsList()}
@@ -63,3 +61,6 @@ class QuestionsDisplay extends React.Component {
 }
 
 export default withRouter(QuestionsDisplay);
+
+
+// {location.hash.slice(2).includes("") ? "All Questions" : "Unanswered"}

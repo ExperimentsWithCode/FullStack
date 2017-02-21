@@ -4,8 +4,8 @@ import { Link, withRouter } from 'react-router';
 const activeLink = ({currentLocation, linkPath}) => {
 	if (linkPath === currentLocation){
 		return " active";
-	} else if ("questions" === currentLocation){
-		if (linkPath === "questions/newest" ){
+	} else if ("" === currentLocation){
+		if (linkPath === "newest" ){
 			return " active";
 		}
 	}
@@ -13,13 +13,12 @@ const activeLink = ({currentLocation, linkPath}) => {
 }
 
 export const MainNavLink = ({currentLocation}) => {  //newest, active, featured, frequent
-
 	return (
 		<div className="tabs">
-			<Link to="questions/newest" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "questions/newest"})}`}>newest</Link>
-			<Link to="questions/frequent" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "questions/frequent"})}`}>frequent</Link>
-			<Link to="questions/votes" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "questions/votes"})}`}>votes</Link>
-			<Link to="questions/active" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "questions/active"})}`}>active</Link>
+			<Link to="newest" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
+			<Link to="frequent" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "frequent"})}`}>frequent</Link>
+			<Link to="votes" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "votes"})}`}>votes</Link>
+			<Link to="active" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
 		</div>
 	);
 }

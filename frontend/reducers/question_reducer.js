@@ -1,6 +1,5 @@
 import {
   RECEIVE_CURRENT_QUESTION,
-  RECEIVE_QUESTIONS,
   REMOVE_CURRENT_QUESTION,
   RECEIVE_QUESTION_ERRORS } from '../actions/question_actions';
 
@@ -22,8 +21,6 @@ const QuestionReducer = (state = _nullQuestion, action) => {
       return merge({}, _nullQuestion, {
         currentQuestion
       });
-    case RECEIVE_QUESTIONS:
-      return {questions: action.questions}
     case REMOVE_CURRENT_QUESTION:
       return merge({}, _nullQuestion);
     case RECEIVE_QUESTION_ERRORS:
