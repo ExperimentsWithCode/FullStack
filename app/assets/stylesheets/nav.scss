@@ -30,8 +30,16 @@
   &.side{
     border:none;
   }
+  &.full{
+    align-items:center;
+  }
 }
 .sub-header-content > h3{
+  font-weight: normal;
+  padding: 28px 0 14px 0;
+}
+
+.sub-header-content > h2{
   font-weight: normal;
   padding: 28px 0 14px 0;
 }
