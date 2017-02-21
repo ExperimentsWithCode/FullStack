@@ -6,7 +6,7 @@ import AskQuestionDisplay from './ask_question_display';
 const mapStateToProps = ({ session, question }) => {
   const current_user = session.currentUser
   return {
-  loggedIn: Boolean(currentUser),
+  loggedIn: Boolean(current_user),
   errors: question.errors || [],
   current_user: current_user};
 };

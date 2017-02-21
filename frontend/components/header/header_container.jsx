@@ -4,9 +4,10 @@ import HeaderDisplay from './header_display';
 
 
 const mapStateToProps = ({ session }) => {
+  const current_user = session.currentUser
   return {
-    currentUser: session.currentUser,
-    loggedIn: Boolean(session.currentUser),
+    currentUser: current_user,
+    loggedIn: Boolean(current_user),
     errors: session.errors,
     path: location.hash.slice(1)
   }
