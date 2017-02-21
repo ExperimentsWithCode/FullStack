@@ -17,5 +17,3 @@ const QuestionLineItem = ({ question, router }) => (
 );
 
 export default QuestionLineItem;
-
-// question.body.substring(0,200)
