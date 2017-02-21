@@ -14,8 +14,14 @@ const activeLink = ({currentLocation, linkPath}) => {
 
 export const SideNavDisplay = ({questions}) => {  //newest, active, featured, frequent
 	return (
-		<div className="tabs">
-			<Link to="active" className={`tab`}>Side Nav!</Link>
+		<div className="sub-header-content side">
+			<div className="QuestionsCount">
+				<h2>{questions.length}</h2>
+				<p>questions</p>
+			</div>
+      <Link to="/ask" className='submit'>Ask Question</Link>
+
 		</div>
+
 	);
 }

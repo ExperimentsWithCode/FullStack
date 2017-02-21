@@ -46,16 +46,16 @@ class QuestionsDisplay extends React.Component {
 	render() {
 		return (
       <div className="container">
-  			<div className="split_content">
-					<div className="main_content">
+  			<div className="split-content">
+					<div className="main-content">
 						<div className="sub-header-content">
 							<h3>All Questions</h3>
 							<MainNavDisplay currentLocation={location.hash.slice(2)} />
 						</div>
 						{this.renderQuestionsList()}
 					</div>
-					<div className="side_content">
-						<SideNavDisplay questions={this.state} />
+					<div className="side-content">
+						<SideNavDisplay questions={this.state.questions} />
 					</div>
         </div>
       </div>

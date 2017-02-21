@@ -10,7 +10,6 @@ const App = ({ children }) => (
     <header>
       < HeaderContainer  />
     </header>
-    < QuestionsContainer />
     {children}
   </div>
 );

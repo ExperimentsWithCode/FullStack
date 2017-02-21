@@ -32,10 +32,11 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory} >
         <Route path="/" component={App} >
+          <IndexRoute component={QuestionsContainer}  />
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/ask" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
-          <Route path="/:wildcard"  />
+          <Route path="/:wildcard" component={QuestionsContainer} />
         </Route>
       </Router>
     </Provider>
