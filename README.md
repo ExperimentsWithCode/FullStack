@@ -15,6 +15,8 @@ https://heapspill.herokuapp.com/
 
 - Login form buttons adjust positioning when errors return. Need to adjust justify-content and margins.
 
+- Update Ask page to swap to edit from new when ID param is present. 
+
 
 ## Interesting Packages
 
