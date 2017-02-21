@@ -2,7 +2,6 @@ import Moment from 'moment'
 
 
 const formatDate = (theDate) => {
-  debugger
   let now = new Date()
   let then = new Date(theDate)
   let delta = now - then

@@ -34,7 +34,6 @@ class CurrentQuestionDisplay extends React.Component {
 	renderQuestion() {
 		if (this.state) {
 			if (this.state.currentQuestion.id !== undefined ) {
-        debugger
 				return (
           <div className="question-display">
             <div className="question-display-content">
