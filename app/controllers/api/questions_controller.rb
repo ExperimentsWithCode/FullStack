@@ -26,7 +26,7 @@ class Api::QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		unless @question.nil?
-			render api_question_url+"/#{@question.id}"
+			render :show
 		else
 			render json: @question.errors.full_messages, status: 422
 		end
