@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import { MainNavLink } from '../nav/main_nav_display';
+import { MainNavDisplay } from '../nav/main_nav_display';
+import { SideNavDisplay } from '../nav/side_nav_display';
 import QuestionLineItem  from './question_line_item';
 
 class QuestionsDisplay extends React.Component {
@@ -48,10 +49,13 @@ class QuestionsDisplay extends React.Component {
   			<div className="split_content">
 					<div className="main_content">
 						<div className="sub-header-content">
-							<h2>All Questions</h2>
-							<MainNavLink currentLocation={location.hash.slice(2)} />
+							<h3>All Questions</h3>
+							<MainNavDisplay currentLocation={location.hash.slice(2)} />
 						</div>
 						{this.renderQuestionsList()}
+					</div>
+					<div className="side_content">
+						<SideNavDisplay questions={this.state} />
 					</div>
         </div>
       </div>

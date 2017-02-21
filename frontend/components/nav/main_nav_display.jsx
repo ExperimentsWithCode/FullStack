@@ -12,7 +12,7 @@ const activeLink = ({currentLocation, linkPath}) => {
 	return "";
 }
 
-export const MainNavLink = ({currentLocation}) => {  //newest, active, featured, frequent
+export const MainNavDisplay = ({currentLocation}) => {  //newest, active, featured, frequent
 	return (
 		<div className="tabs">
 			<Link to="newest" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
