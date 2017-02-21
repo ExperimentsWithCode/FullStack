@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import HeaderContainer from './header/header_container';
+import QuestionsContainer from './questions/questions_container';
 // import HomePage from './homepage/homepage_container';
 
 const App = ({ children }) => (
@@ -9,6 +10,7 @@ const App = ({ children }) => (
     <header>
       < HeaderContainer  />
     </header>
+    < QuestionsContainer />
     {children}
   </div>
 );
