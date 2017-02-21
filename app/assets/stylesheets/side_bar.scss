@@ -1,0 +1,12 @@
+.side-content{
+  width:328px;
+  margin:15px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-around;
+  flex-direction: column;
+}
+
+.sub-header-content > .submit{
+  padding: 12px 5px;
+}

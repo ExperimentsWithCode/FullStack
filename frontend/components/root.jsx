@@ -9,6 +9,7 @@ import App from './App';
 import SessionFormContainer from './session_form/session_form_container';
 import AskQuestionContainer from './ask_question/ask_question_container';
 import QuestionsContainer from './questions/questions_container';
+import CurrentQuestionContainter from './current_question/current_question_container';
 
 
 
@@ -32,12 +33,13 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory} >
         <Route path="/" component={App} >
+          <IndexRoute component={QuestionsContainer}  />
           <Route path="/login" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
-          <Route path="/questions/ask" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
-          <Route path="/questions" component={QuestionsContainer} onEnter={_ensureLoggedIn} >
-          </Route>
-          <Route path="/questions/:wildcard" component={QuestionsContainer} />
+          <Route path="/ask" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
+          <Route path="/ask/:id" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
+          <Route path="/question/:id" component={CurrentQuestionContainter} onEnter={_ensureLoggedIn} />
+          <Route path="/:wildcard" component={QuestionsContainer} />
         </Route>
       </Router>
     </Provider>

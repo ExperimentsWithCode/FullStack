@@ -23,9 +23,9 @@ export const update = (question) => {
   });
 };
 
-export const show = ({id}) => {
+export const show = (id) => {
   return $.ajax({
-    method: 'POST',
+    method: 'GET',
     url: `/api/questions/${id}`
   });
 };

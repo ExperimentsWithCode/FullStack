@@ -19,14 +19,14 @@ class Api::QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all()
+		@questions = Question.all
 		render :index
 	end
 
 	def show
 		@question = Question.find(params[:id])
 		unless @question.nil?
-			render api_question_url+"/#{@question.id}"
+			render :show
 		else
 			render json: @question.errors.full_messages, status: 422
 		end
