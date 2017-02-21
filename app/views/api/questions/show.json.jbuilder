@@ -1,1 +1,1 @@
-json.extract! @question
+json.partial! '/api/questions/question', question: @question

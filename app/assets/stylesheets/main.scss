@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin:500,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
 
+* {
+  margin: 0;
+  padding: 0;
+}
 
 body{
   h1, h2, h3, h4{font-family: 'Cabin', sans-serif;}
@@ -9,6 +13,8 @@ body{
 }
 
 h2, h3, h4{font-weight: normal;}
+
+p{font-size:12px}
 
 .submit{
   background: #07C;
@@ -54,19 +60,21 @@ a{
   flex-direction: column;
 }
 
-.split_content{
+.split-content{
   color: #464e55;
   align: center;
   width:100%;
   max-width:1080px;
   height:auto;
-  margin: 0 1% 0 1%;
   text-align: center;
   box-sizing: border-box;
-  border: 1px solid #F48024;
-  padding: 24px 15px;
+  // border: 1px solid #F48024;
   min-height: 750px;
   overflow: visible;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  flex-direction: row;
 
   // &.content {
   //   border-style: none;
@@ -76,49 +84,4 @@ a{
   //   justify-content:center;
   //   flex-direction: column;
   // }
-}
-
-.main_content{
-  width:65%;
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-around;
-  flex-direction: column;
-  label{
-    margin-right:5%;
-    font-weight: bold;
-  }
-}
-
-
-.tabs{
-  height:auto;
-  width:auto;
-  padding: 13px 10px 0px 10px;
-  margin-bottom: 0.83em;
-}
-.tab{
-  padding: 13px 10px;
-  cursor: pointer;
-  color:#848d95;
-
-  &.active{
-    border: 2px solid;
-    border-color:#e4e6e8;
-    border-top:2px solid #f69c55;
-    border-bottom-color: white;
-    color:#242729;
-  }
-}
-
-
-.sub-header-content{
-  padding:2% 2% 0 2%;
-  width:auto;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  flex-direction: row;
-  margin: 2;
-  border-bottom:2px solid #e4e6e8;
 }

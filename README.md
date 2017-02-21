@@ -9,3 +9,17 @@
 
 ## To view site visit
 https://heapspill.herokuapp.com/
+
+
+## To Do's
+
+- Login form buttons adjust positioning when errors return. Need to adjust justify-content and margins.
+
+
+## Interesting Packages
+
+https://momentjs.com/
+
+https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+
+https://css-tricks.com/almanac/properties/t/text-overflow/

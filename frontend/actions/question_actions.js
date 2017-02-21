@@ -42,10 +42,11 @@ export const receiveCurrentQuestion = currentQuestion => {
   currentQuestion};
 };
 
-export const receiveQuestions = questions => ({
+export const receiveQuestions = questions => {
+  return {
   type: RECEIVE_QUESTIONS,
   questions
-});
+}};
 
 export const removeCurrentQuestion = currentQuestion => ({
   type: REMOVE_CURRENT_QUESTION,
