@@ -8,7 +8,7 @@ const formatDate = (theDate) => {
   if (delta < 86400000 * 7){ // less than a week
     return Moment(theDate).fromNow()
   }
-  return Moment(theDate).format('MMM Do YYYY, h:mm:ss a');
+  return Moment(theDate).format('MMM Do YYYY, h:mm a');
 }
 
 export default formatDate

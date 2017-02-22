@@ -39,7 +39,7 @@ class CurrentQuestionDisplay extends React.Component {
           <div className="question-display">
             <div className="question-display-content">
               <div className="question-stat-bar">
-                <span className="list-view-score">0</span>
+                <span className="list-view-score">{this.state.currentQuestion.answers.length}</span>
                 <span className="list-view-label">answers</span>
               </div>
               <p>{this.state.currentQuestion.body}</p>
@@ -78,10 +78,10 @@ class CurrentQuestionDisplay extends React.Component {
 
 	renderAnswersHeader(){
 		debugger
-		if (this.state.currentQuestion.answers.answer === "undefined"){
+		if (this.state.currentQuestion.answers[0] !== "undefined"){
 			return (
 				<div className="sub-header-content">
-					<h3>`${this.state.currentQuestion.answers.length} Answers`</h3>
+					<h3>{`${this.state.currentQuestion.answers.length} Answers`}</h3>
 					<AnswerNavDisplay currentLocation={location.hash.slice(2)} />
 				</div>
 			);}

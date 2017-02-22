@@ -1,4 +1,4 @@
-json.extract! question, :id, :title, :body, :author_id, :created_at, :updated_at
+json.extract! answer, :id, :body, :author_id, :question_id,  :created_at, :updated_at
 json.author do
-  json.extract! question.author, :id, :username
+  json.extract! answer.author, :id, :username
 end
