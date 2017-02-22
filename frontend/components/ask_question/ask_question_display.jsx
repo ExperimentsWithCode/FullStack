@@ -6,6 +6,7 @@ class AskQuestionDisplay extends React.Component {
 		super(props);
 		this.state = { title: "", body: "", author_id: this.props.current_user.id };
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.navigateToIndex = this.navigateToIndex.bind(this);
 	}
 
 	componentWillReceiveProps(newProps){
@@ -38,7 +39,7 @@ class AskQuestionDisplay extends React.Component {
 		e.preventDefault();
 		const currentQuestion = this.state;
 		this.props.create(currentQuestion);
-		navigateToShow()
+		this.navigateToShow();
 	}
 
 	renderErrors() {
