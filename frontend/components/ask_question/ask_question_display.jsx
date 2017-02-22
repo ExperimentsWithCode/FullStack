@@ -24,6 +24,10 @@ class AskQuestionDisplay extends React.Component {
 		}
 	}
 
+	navigateToIndex() {
+    this.props.router.push("/");
+  }
+
 	update(field) {
 		return e => this.setState({
 			[field]: e.currentTarget.value
@@ -34,6 +38,7 @@ class AskQuestionDisplay extends React.Component {
 		e.preventDefault();
 		const currentQuestion = this.state;
 		this.props.create(currentQuestion);
+		navigateToShow()
 	}
 
 	renderErrors() {

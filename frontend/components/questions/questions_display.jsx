@@ -54,9 +54,6 @@ class QuestionsDisplay extends React.Component {
 						</div>
 						{this.renderQuestionsList()}
 					</div>
-					<div className="side-content">
-						<SideNavDisplay questions={this.state.questions} />
-					</div>
         </div>
       </div>
 		);

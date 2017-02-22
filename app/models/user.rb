@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   primary_key: :id
   )
 
+
+  has_many(
+  :answers,
+  class_name: "Answer",
+  foreign_key: :question_id,
+  primary_key: :id
+  )
+
   def password_equals_confirm
     if self.password != self.confirm
       errors.add(:confirm, "Must match password")

@@ -3,13 +3,14 @@ import { Link, withRouter } from 'react-router';
 import { SideNavDisplay } from '../nav/side_nav_display';
 import FormatDate from '../../util/format_date_util.js'
 import AuthorBoxDisplay from '../user_box/author_box_display'
+import { AnswerNavDisplay } from '../nav/answer_nav_display';
 
 
 class CurrentQuestionDisplay extends React.Component {
 	constructor(props) {
 		super(props);
 		this.formType = this.props.formType;
-		this.state = this.props.question;
+		this.state = { currentQuestion : {answers:{}}, errors: {}}
 	}
 
 	componentDidMount(){
@@ -49,7 +50,6 @@ class CurrentQuestionDisplay extends React.Component {
               <div className="question-display-footer">
                 <Link to={`/ask/${this.props.params.id}`}>Edit</Link>
 								{AuthorBoxDisplay(this.state.currentQuestion.author, this.state.currentQuestion.created_at )}
-
               </div>
             </div>
           </div>
@@ -76,6 +76,22 @@ class CurrentQuestionDisplay extends React.Component {
 		return (<p> Nothing to render </p>)
 	}
 
+	renderAnswersHeader(){
+		debugger
+		if (this.state.currentQuestion.answers.answer === "undefined"){
+			return (
+				<div className="sub-header-content">
+					<h3>`${this.state.currentQuestion.answers.length} Answers`</h3>
+					<AnswerNavDisplay currentLocation={location.hash.slice(2)} />
+				</div>
+			);}
+		return  (
+			<div className="sub-header-content">
+				&nbsp;
+			</div>
+		);
+	}
+
 	render() {
 		return (
       <div className="container">
@@ -85,6 +101,7 @@ class CurrentQuestionDisplay extends React.Component {
             <div className="questions-list">
               {this.renderQuestion()}
             </div>
+						{this.renderAnswersHeader()}
 					</div>
 					<div className="side-content">
 					</div>
