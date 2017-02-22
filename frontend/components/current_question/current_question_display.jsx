@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import { SideNavDisplay } from '../nav/side_nav_display';
-import FormatDate from '../../util/format_date_util.js'
-import AuthorBoxDisplay from '../user_box/author_box_display'
+import FormatDate from '../../util/format_date_util.js';
+import AuthorBoxDisplay from '../user_box/author_box_display';
 import { AnswerNavDisplay } from '../nav/answer_nav_display';
+import AnswerFormContainer from '../answer_form/answer_form_container';
 
 
 class CurrentQuestionDisplay extends React.Component {
 	constructor(props) {
 		super(props);
 		this.formType = this.props.formType;
-		this.state = { currentQuestion : {answers:{}}, errors: {}}
+		this.state = { currentQuestion : {answers:{}}, errors: {}};
 	}
 
 	componentDidMount(){
@@ -57,7 +58,7 @@ class CurrentQuestionDisplay extends React.Component {
 			);
 			}
 		}
-		return (<p> Nothing to render </p>)
+		return (<p> Nothing to render </p>);
 	}
   renderQuestionHeader() {
     if (this.state) {
@@ -73,11 +74,10 @@ class CurrentQuestionDisplay extends React.Component {
 			);
 			}
 		}
-		return (<p> Nothing to render </p>)
+		return (<p> Nothing to render </p>);
 	}
 
 	renderAnswersHeader(){
-		debugger
 		if (this.state.currentQuestion.answers[0] !== "undefined"){
 			return (
 				<div className="sub-header-content">
@@ -102,6 +102,7 @@ class CurrentQuestionDisplay extends React.Component {
               {this.renderQuestion()}
             </div>
 						{this.renderAnswersHeader()}
+            <AnswerFormContainer />
 					</div>
 					<div className="side-content">
 					</div>

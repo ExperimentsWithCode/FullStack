@@ -3,16 +3,16 @@ import { create } from '../../actions/answer_actions';
 import AnswerFormDisplay from './answer_form_display';
 
 
-const mapStateToProps = ({ session, answer }) => {
+const mapStateToProps = ({ session, currentAnswer }) => {
   const current_user = session.currentUser
   return {
   loggedIn: Boolean(current_user),
-  errors: question.errors || [],
+  errors: currentAnswer ? currentAnswer.errors : [],
   current_user: current_user};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  create:  (currentQuestion) => dispatch(create(currentQuestion))
+  create:  (currentAnswer) => dispatch(create(currentAnswer))
 });
 
 export default connect(
