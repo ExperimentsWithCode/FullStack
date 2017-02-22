@@ -39,7 +39,7 @@ class QuestionsDisplay extends React.Component {
 			);
 			}
 		}
-		return (<p> Nothing to render </p>)
+		return (<p> Loading... </p>)
 	}
 
 
