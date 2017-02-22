@@ -52,6 +52,7 @@
 }
 
 .author-info{
+  align-self: flex-end;
   box-sizing: border-box;
   padding: 5px 6px 7px 7px;
   width:100%;
@@ -59,6 +60,9 @@
   max-width: 33%;
   color: #6a737c;
   background-color:#E0EAF1;
+  &.question {
+    background-color: inherit;
+  }
 }
 
 .questions-list-item{
@@ -79,6 +83,7 @@
   width:46px;
 }
 .question-summary{
+  width: 100%;
   display:flex;
   align-items:flex-start;
   justify-content:flex-start;
