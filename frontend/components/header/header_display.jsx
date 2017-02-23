@@ -54,6 +54,7 @@ const headerMain = (currentUser, logout, path) => (
             <Link to="/" className="link-header">
               <h1>HeapSpill</h1>
             </Link>
+            <input className="search-bar" placeholder="Search..."></input>
           </div>
           {currentUser ? headerLoggedIn(currentUser, logout) : headerLoggedOut()}
         </hgroup>

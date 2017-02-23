@@ -125,7 +125,7 @@ class CurrentQuestionDisplay extends React.Component {
 					<br></br>
 					<h3>You must be logged in to submit an answer.</h3>
 					<br></br>
-						<div className="header-group-left">
+						<div className="header-group-right">
 							<Link to="/login" className="button-session link">Log In</Link>
 							<Link to="/signup" className="button-session special">Sign Up</Link>
 					  </div>
