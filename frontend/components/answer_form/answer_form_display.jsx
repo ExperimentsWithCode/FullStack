@@ -58,7 +58,6 @@ class AnswerFormDisplay extends React.Component {
 	}
 
 	render() {
-    debugger
 		return (
       <form onSubmit={this.handleSubmit} className="main-content">
         <h3>Your Answer</h3>

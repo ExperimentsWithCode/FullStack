@@ -27,14 +27,14 @@
   justify-content:space-between;
   flex-direction: row;
   border-bottom:2px solid #e4e6e8;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
   &.side{
     border:none;
   }
   &.full{
     align-items:center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
   }
 }
 .sub-header-content > h3{

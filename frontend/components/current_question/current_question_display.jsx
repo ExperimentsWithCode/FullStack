@@ -103,7 +103,6 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	renderAnswersList() {
-		debugger
 		if (this.state) {
 			if (this.state.currentQuestion.answers.length !== undefined ) {
 

@@ -28,3 +28,12 @@ https://css-tricks.com/almanac/properties/t/text-overflow/
 
 
 pagination : kaminari
+
+
+.navbar-search{
+  .width A
+  transition: width: X;
+}
+.navbar-search:focus{
+  width: B
+}
