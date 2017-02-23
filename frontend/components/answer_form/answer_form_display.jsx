@@ -12,14 +12,15 @@ class AnswerFormDisplay extends React.Component {
 
 	componentWillReceiveProps(newProps){
 		if (newProps.route === this.props.route){
+			let author_id
 			this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
 			this.state = { body: "", author_id: author_id, question_id: this.props.params.id};
 		}
 	}
 
-	// componentDidUpdate() {
-	// 	this.ensureLoggedIn();
-	// }
+	componentDidUpdate() {
+
+	}
 
 	ensureLoggedIn() {
 		if (!this.props.loggedIn) {
@@ -34,10 +35,13 @@ class AnswerFormDisplay extends React.Component {
 	}
 
 	handleSubmit(e) {
-      this.ensureLoggedIn();
 		e.preventDefault();
+    this.ensureLoggedIn();
 		const currentQuestion = this.state;
 		this.props.create(this.state);
+		let author_id
+		this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
+		this.setState({ body: "", author_id: author_id, question_id: this.props.params.id})
 	}
 
 	renderErrors() {
@@ -64,7 +68,7 @@ class AnswerFormDisplay extends React.Component {
           <textarea className="question-body-textarea" rows="10" onChange={this.update("body")} value={this.state.body}>
           </textarea>
         </div>
-        <input type="submit" value="Post Your Question" className="submit question"/>
+        <input type="submit" value="Post Your Answer" className="submit question"/>
       </form>
     );
  	}
