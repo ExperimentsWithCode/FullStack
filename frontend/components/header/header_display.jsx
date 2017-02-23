@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const headerLoggedOut = () => (
+export const headerLoggedOut = () => (
   <div className="header-group-right">
     <Link to="/login" className="link-login">
       <p>Login</p>

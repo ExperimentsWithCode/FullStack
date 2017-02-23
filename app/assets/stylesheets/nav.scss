@@ -27,6 +27,10 @@
   justify-content:space-between;
   flex-direction: row;
   border-bottom:2px solid #e4e6e8;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
   &.side{
     border:none;
   }
@@ -42,4 +46,8 @@
 .sub-header-content > h2{
   font-weight: normal;
   padding: 28px 0 14px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  width:65%;
 }
