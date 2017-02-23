@@ -6,9 +6,7 @@ export const headerLoggedOut = () => (
     <Link to="/login" className="link-login">
       <p>Login</p>
     </Link>
-    <div className='button-session button'>
       <Link to="/signup" className="button-session link">Sign Up</Link>
-    </div>
   </div>
 );
 

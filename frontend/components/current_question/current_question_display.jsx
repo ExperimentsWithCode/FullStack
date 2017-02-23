@@ -6,6 +6,7 @@ import AuthorBoxDisplay from '../user_box/author_box_display';
 import { AnswerNavDisplay } from '../nav/answer_nav_display';
 import AnswerFormContainer from '../answer_form/answer_form_container';
 import { headerLoggedOut } from '../header/header_display';
+import AnswerLineItem from './answer_line_item';
 
 
 class CurrentQuestionDisplay extends React.Component {
@@ -87,7 +88,7 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	renderAnswersHeader(){
-		if (this.state.currentQuestion.answers[0] !== "undefined"){
+		if (this.state.currentQuestion.answers[0] !== undefined){
 			return (
 				<div className="sub-header-content">
 					<h3>{`${this.state.currentQuestion.answers.length} Answers`}</h3>
@@ -100,6 +101,23 @@ class CurrentQuestionDisplay extends React.Component {
 			</div>
 		);
 	}
+
+	renderAnswersList() {
+		debugger
+		if (this.state) {
+			if (this.state.currentQuestion.answers.length !== undefined ) {
+
+				const lineItems = this.state.currentQuestion.answers.map( (answer) => (< AnswerLineItem key={answer.id} answer={answer} />));
+				return (
+					<ul className="questions-list">
+						{lineItems}
+					</ul>
+			);
+			}
+		}
+		return (<p> Loading... </p>)
+	}
+
 
 	renderAnswerForm(){
 		if (this.props.current_user === null){
@@ -132,6 +150,7 @@ class CurrentQuestionDisplay extends React.Component {
               {this.renderQuestion()}
             </div>
 						{this.renderAnswersHeader()}
+						{this.renderAnswersList()}
 						{this.renderAnswerForm()}
 					</div>
 					<div className="side-content">
