@@ -38,8 +38,11 @@ class AskQuestionDisplay extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const currentQuestion = this.state;
-		this.props.create(currentQuestion);
-		this.navigateToShow();
+		this.props.create(currentQuestion).then(({currentQuestion})=>{
+			debugger
+			this.props.router.push(`/question/${currentQuestion.id}`)
+		});
+
 	}
 
 	renderErrors() {

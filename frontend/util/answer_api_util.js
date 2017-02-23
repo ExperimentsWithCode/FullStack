@@ -8,7 +8,6 @@ export const index = () => {
 };
 
 export const create = (answer) => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/answers',
