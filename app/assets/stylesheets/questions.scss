@@ -36,6 +36,10 @@
   flex-direction: row;
   width: 100%;
   margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .question-display-content > p{
@@ -90,6 +94,10 @@
   flex-direction: column;
   text-align: left;
   padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .question-summary > p {

@@ -54,10 +54,14 @@
   font-size: 13px;
   cursor: pointer;
   &.link{
-    width:100%;
+    width:auto;
   }
   &.button{
     margin-right:10px;
+    width:auto;
+  }
+  &.special{
+    background: #F48024;
   }
 }
 

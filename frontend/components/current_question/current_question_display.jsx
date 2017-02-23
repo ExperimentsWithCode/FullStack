@@ -5,6 +5,7 @@ import FormatDate from '../../util/format_date_util.js';
 import AuthorBoxDisplay from '../user_box/author_box_display';
 import { AnswerNavDisplay } from '../nav/answer_nav_display';
 import AnswerFormContainer from '../answer_form/answer_form_container';
+import { headerLoggedOut } from '../header/header_display';
 
 
 class CurrentQuestionDisplay extends React.Component {
@@ -12,6 +13,7 @@ class CurrentQuestionDisplay extends React.Component {
 		super(props);
 		this.formType = this.props.formType;
 		this.state = { currentQuestion : {answers:{}}, errors: {}};
+		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 	}
 
 	componentDidMount(){
@@ -33,6 +35,13 @@ class CurrentQuestionDisplay extends React.Component {
     return `asked ${FormatDate(theDate)}`;
   }
 
+	selfQuestionTools(){
+		if (this.props.current_user === null || this.props.current_user.id === this.state.currentQuestion.author.id ){
+			return <div></div>
+		}
+		return <Link to={`/ask/${this.props.params.id}`}>Edit</Link>
+
+	}
 	renderQuestion() {
 		if (this.state) {
 			if (this.state.currentQuestion.id !== undefined ) {
@@ -49,7 +58,7 @@ class CurrentQuestionDisplay extends React.Component {
               <div className="question-stat-bar">
               </div>
               <div className="question-display-footer">
-                <Link to={`/ask/${this.props.params.id}`}>Edit</Link>
+                {this.selfQuestionTools()}
 								{AuthorBoxDisplay(this.state.currentQuestion.author, this.state.currentQuestion.created_at )}
               </div>
             </div>
@@ -92,6 +101,27 @@ class CurrentQuestionDisplay extends React.Component {
 		);
 	}
 
+	renderAnswerForm(){
+		if (this.props.current_user === null){
+			return (
+				<div>
+					<br></br>
+					<h3>You must be logged in to submit an answer.</h3>
+					<br></br>
+						<div className="header-group-left">
+							<Link to="/login" className="button-session link">Log In</Link>
+							<Link to="/signup" className="button-session special">Sign Up</Link>
+					  </div>
+				</div>
+			)
+
+
+		}
+		else{
+			return <AnswerFormContainer />
+		}
+	}
+
 	render() {
 		return (
       <div className="container">
@@ -102,7 +132,7 @@ class CurrentQuestionDisplay extends React.Component {
               {this.renderQuestion()}
             </div>
 						{this.renderAnswersHeader()}
-            <AnswerFormContainer />
+						{this.renderAnswerForm()}
 					</div>
 					<div className="side-content">
 					</div>

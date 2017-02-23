@@ -4,13 +4,16 @@ import { Link, withRouter } from 'react-router';
 class AnswerFormDisplay extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { body: "", author_id: this.props.current_user.id, question_id: this.props.params.id};
+		let author_id
+		this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
+		this.state = { body: "", author_id: author_id, question_id: this.props.params.id};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentWillReceiveProps(newProps){
 		if (newProps.route === this.props.route){
-			this.state = { body: "", author_id: this.props.current_user.id, question_id: this.props.params.id};
+			this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
+			this.state = { body: "", author_id: author_id, question_id: this.props.params.id};
 		}
 	}
 
