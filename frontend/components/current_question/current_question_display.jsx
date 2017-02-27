@@ -107,7 +107,7 @@ class CurrentQuestionDisplay extends React.Component {
 	voted(answer, val) {
 		let user_voted = false;
 		//check if user voted on this question
-		if (answer.vote_count > 0){
+		if (answer.votes.length > 0){
 			answer.votes.forEach((vote)=> {
 				if (vote.user_id === this.props.current_user.id && vote.value === val){
 					user_voted = true
@@ -124,18 +124,22 @@ class CurrentQuestionDisplay extends React.Component {
 		let func = (answer) => (answer.id == id)
 		let currentQuestion = this.state.currentQuestion
 		let answer = currentQuestion.answers.find(func);
+		func = (vote) => (this.props.current_user.id == vote.user_id)
+		let vote = answer.votes.find(func)
+		debugger
 		if (e.currentTarget.attributes.class.value === "upvote"){
+			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "1"
 			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
 		} else if (e.currentTarget.attributes.class.value === "downvote"){
-			val = "1"
+			if (vote !== undefined) { this.props.destroy(vote) }
+			val = "-1"
 			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
 		} else {
-			func = (vote) => (this.props.current_user.id == vote.user_id)
-			let vote = answer.votes.find(func)
+
 			this.props.destroy(vote)
 		}
-		debugger
+
 	}
 // e.preventDefault();
 // e.currentTarget.attributes.class.value
@@ -151,7 +155,7 @@ class CurrentQuestionDisplay extends React.Component {
 							<span className={`upvote${this.voted(answer, 1)}`} onClick={this.handleVote} value={answer.id}></span>
 							<span className="list-view-score">{answer.vote_count}</span>
 							<span className="list-view-label">Votes</span>
-							<span className={`downvote${this.voted(answer, 2)}`}  onClick={this.handleVote} value={answer.id} ></span>
+							<span className={`downvote${this.voted(answer, -1)}`}  onClick={this.handleVote} value={answer.id} ></span>
 						</div>
 						<div className="question-summary">
 							<p>{answer.body}</p>
