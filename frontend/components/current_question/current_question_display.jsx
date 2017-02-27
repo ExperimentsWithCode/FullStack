@@ -29,6 +29,7 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentDidUpdate() {
+
 	}
 
 
@@ -124,9 +125,8 @@ class CurrentQuestionDisplay extends React.Component {
 		let func = (answer) => (answer.id == id)
 		let currentQuestion = this.state.currentQuestion
 		let answer = currentQuestion.answers.find(func);
-		func = (vote) => (this.props.current_user.id == vote.user_id)
-		let vote = answer.votes.find(func)
-		debugger
+		let func2 = (vote) => (this.props.current_user.id == vote.user_id)
+		let vote = answer.votes.find(func2)
 		if (e.currentTarget.attributes.class.value === "upvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "1"
@@ -139,7 +139,8 @@ class CurrentQuestionDisplay extends React.Component {
 
 			this.props.destroy(vote)
 		}
-
+		debugger
+		this.props.show(currentQuestion.id)
 	}
 // e.preventDefault();
 // e.currentTarget.attributes.class.value
