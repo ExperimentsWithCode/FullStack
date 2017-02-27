@@ -16,7 +16,6 @@ class AskQuestionDisplay extends React.Component {
 	}
 
 	componentDidUpdate() {
-		this.ensureLoggedIn();
 	}
 
 	ensureLoggedIn() {

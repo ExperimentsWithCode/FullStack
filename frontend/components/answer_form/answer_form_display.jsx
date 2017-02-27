@@ -40,8 +40,10 @@ class AnswerFormDisplay extends React.Component {
 		const currentQuestion = this.state;
 		this.props.create(this.state);
 		let author_id
+		this.props.receiveCurrentAnswer
 		this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
 		this.setState({ body: "", author_id: author_id, question_id: this.props.params.id})
+		this.props.receiveCurrentAnswer
 	}
 
 	renderErrors() {

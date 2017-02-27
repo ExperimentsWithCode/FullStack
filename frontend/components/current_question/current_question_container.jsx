@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import { show } from '../../actions/question_actions';
+import { create, destroy } from '../../actions/vote_actions';
+
 import CurrentQuestionDisplay from './current_question_display';
 import { selectAllQuestions } from '../../reducers/selectors.js';
 
@@ -17,6 +19,8 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     show: (id) => dispatch(show(id)),
+    create: (vote) => dispatch(create(vote)),
+    destroy: (vote) => dispatch(destroy(vote)),
     formType
   };
 };

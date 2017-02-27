@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { create } from '../../actions/answer_actions';
+import { create, receiveCurrentAnswer } from '../../actions/answer_actions';
 import AnswerFormDisplay from './answer_form_display';
 
 
@@ -12,7 +12,8 @@ const mapStateToProps = ({ session, currentAnswer }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  create:  (currentAnswer) => dispatch(create(currentAnswer))
+  create:  (currentAnswer) => dispatch(create(currentAnswer)),
+  receiveCurrentAnswer: (receiveCurrentAnswer) => dispatch(CurrentAnswer(CurrentAnswer))
 });
 
 export default connect(
