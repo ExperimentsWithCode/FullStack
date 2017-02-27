@@ -1,10 +1,8 @@
 class Api::QuestionsController < ApplicationController
 
 	def create
-		debugger
 		@question = Question.new(question_params)
 		if @question.save
-			debugger
 			render :show
 		else
 			render json: @question.errors.full_messages, status: 422

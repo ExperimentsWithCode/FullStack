@@ -88,3 +88,30 @@ a{
   //   flex-direction: column;
   // }
 }
+
+
+.upvote {
+  margin: 5px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #464e55;
+  cursor:pointer;
+  &.active{
+    border-bottom-color: #f69c55
+  }
+}
+
+.downvote {
+  margin: 5px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #464e55;
+  cursor:pointer;
+  &.active{
+    border-top-color: #f69c55
+  }
+}

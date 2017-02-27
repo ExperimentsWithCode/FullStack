@@ -22,6 +22,13 @@ class User < ActiveRecord::Base
   primary_key: :id
   )
 
+  has_many(
+  :votes,
+  class_name: "Vote",
+  foreign_key: :user_id,
+  primary_key: :id
+  )
+
   def password_equals_confirm
     if self.password != self.confirm
       errors.add(:confirm, "Must match password")

@@ -131,11 +131,11 @@
   border-radius: 2px;
   color: #6a737c;
   width: 20%;
-  transition: width 1s;
+  transition: width 500ms;
   border: 1px solid #c8ccd0;
   font-size: 14px;
 }
 
 .search-bar:focus{
-  width: 60%;
+  width: 70%;
 }

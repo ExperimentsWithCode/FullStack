@@ -13,8 +13,9 @@ class CurrentQuestionDisplay extends React.Component {
 	constructor(props) {
 		super(props);
 		this.formType = this.props.formType;
-		this.state = { currentQuestion : {answers:{}}, errors: {}};
+		this.state = { currentQuestion : {answers:{ }}, errors: {}};
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
+		this.handleVote = this.handleVote.bind(this)
 	}
 
 	componentDidMount(){
@@ -28,8 +29,9 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentDidUpdate() {
-
 	}
+
+
 
 
   formatDate(theDate){
@@ -88,7 +90,7 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	renderAnswersHeader(){
-		if (this.state.currentQuestion.answers[0] !== undefined){
+		if (this.state.currentQuestion.answers !== undefined){
 			return (
 				<div className="sub-header-content">
 					<h3>{`${this.state.currentQuestion.answers.length} Answers`}</h3>
@@ -102,11 +104,62 @@ class CurrentQuestionDisplay extends React.Component {
 		);
 	}
 
+	voted(answer, val) {
+		let user_voted = false;
+		//check if user voted on this question
+		if (answer.vote_count > 0){
+			answer.votes.forEach((vote)=> {
+				if (vote.user_id === this.props.current_user.id && vote.value === val){
+					user_voted = true
+				};
+			});
+		}
+		return user_voted ? " active" : "";
+	}
+
+
+	handleVote(e) {
+		let id = e.currentTarget.attributes.value.value
+		let val
+		let func = (answer) => (answer.id == id)
+		let currentQuestion = this.state.currentQuestion
+		let answer = currentQuestion.answers.find(func);
+		if (e.currentTarget.attributes.class.value === "upvote"){
+			val = "1"
+			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
+		} else if (e.currentTarget.attributes.class.value === "downvote"){
+			val = "1"
+			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
+		} else {
+			func = (vote) => (this.props.current_user.id == vote.user_id)
+			let vote = answer.votes.find(func)
+			this.props.destroy(vote)
+		}
+		debugger
+	}
+// e.preventDefault();
+// e.currentTarget.attributes.class.value
+// e.currentTarget.attributes.value.value
+// x = this.state.currentQuestion.answers.find((answer, id)=> answer.id === id)
 	renderAnswersList() {
 		if (this.state) {
 			if (this.state.currentQuestion.answers.length !== undefined ) {
 
-				const lineItems = this.state.currentQuestion.answers.map( (answer) => (< AnswerLineItem key={answer.id} answer={answer} />));
+				const lineItems = this.state.currentQuestion.answers.map( (answer) => (
+					<li className="questions-list-item" key={answer.id}>
+						<div className="question-stat-bar">
+							<span className={`upvote${this.voted(answer, 1)}`} onClick={this.handleVote} value={answer.id}></span>
+							<span className="list-view-score">{answer.vote_count}</span>
+							<span className="list-view-label">Votes</span>
+							<span className={`downvote${this.voted(answer, 2)}`}  onClick={this.handleVote} value={answer.id} ></span>
+						</div>
+						<div className="question-summary">
+							<p>{answer.body}</p>
+							{ AuthorBoxDisplay(answer.author, answer.created_at, true )}
+						</div>
+					</li>
+
+				));
 				return (
 					<ul className="questions-list">
 						{lineItems}
@@ -140,6 +193,7 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	render() {
+		debugger
 		return (
       <div className="container">
         {this.renderQuestionHeader()}

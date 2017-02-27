@@ -18,9 +18,10 @@ const AnswerReducer = (state = _nullAnswer, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CURRENT_ANSWER:
-      const currentAnswer = action.currentAnswer;
-      return merge({}, _nullAnswer, {
-        currentAnswer
+      // const currentAnswer = action.currentAnswer;
+      const newAnswer = {[action.currentAnswer.id]: action.currentAnswer};
+      return merge({}, state, {
+        newAnswer
       });
     case RECEIVE_ANSWERS:
       return {questions: action.answers}
