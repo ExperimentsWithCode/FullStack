@@ -1,39 +1,24 @@
-# README
+# HeapSpill
 
-## To get started, run the following
-  npm install --save webpack react react-dom react-router redux react-redux babel-core babel-loader babel-preset-react babel-preset-es2015 redux-thunk moment
-
-  bundle install
-
-  bundle exec rake db:setup
-
-## To view site visit
+### Live Site
 https://heapspill.herokuapp.com/
 
-
-## To Do's
-
-- Login form buttons adjust positioning when errors return. Need to adjust justify-content and margins.
-
-- Update Ask page to swap to edit from new when ID param is present.
+## Overview
+Inspired by Stack Overflow, HeapSpill seeks to allows users to solve problems encountered while coding. It is built using Ruby on Rails, React on Redux, and Sass.
 
 
-## Interesting Packages
+###Features
+* Sign up/in with email
+* Ask Questions
+* Answer Questions
+* Vote on Answers
 
-https://momentjs.com/
-
-https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
-
-https://css-tricks.com/almanac/properties/t/text-overflow/
-
-
-pagination : kaminari
-
-
-.navbar-search{
-  .width A
-  transition: width: X;
-}
-.navbar-search:focus{
-  width: B
-}
+###To-Do:
+* [ ] Update Create forms to also edit
+* [ ] Update Votes to work on questions too
+* [ ] Notifications
+* [ ] Pagination
+* [ ] Search
+* [ ] Sort
+* [ ] Tags
+* [ ] Profiles
