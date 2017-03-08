@@ -10,8 +10,10 @@ class AskQuestionDisplay extends React.Component {
 	}
 
 	componentWillReceiveProps(newProps){
-		if (newProps.route === this.props.route){
+		if (newProps.route.path === "/ask"){
 			this.state = { title: "", body: "", author_id: this.props.current_user.id };
+		} else if (newProps.currentQuestion.author_id === this.props.current_user.id ){
+			this.state = newProps.currentQuestion;
 		}
 	}
 
@@ -37,9 +39,17 @@ class AskQuestionDisplay extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const currentQuestion = this.state;
-		this.props.create(currentQuestion).then(({currentQuestion})=>{
-			this.props.router.push(`/question/${currentQuestion.id}`)
-		});
+		if (this.props.route.path === "/ask"){
+			this.props.create(currentQuestion).then(({currentQuestion})=>{
+				this.props.router.push(`/question/${currentQuestion.id}`)}
+				);
+		} else {
+			this.props.update(currentQuestion).then(({currentQuestion})=>{
+				debugger
+				this.props.router.push(`/question/${currentQuestion.id}`)}
+			);
+		}
+
 
 	}
 
@@ -56,8 +66,19 @@ class AskQuestionDisplay extends React.Component {
 		)};
 	};
 
+	renderSubmit() {
+		if (this.props.route.path === "/ask"){
+			return (
+				<input type="submit" value="Post Your Question"
+					className="submit question"/>)
+		} else return (
+			<input type="submit" value="Update Your Question"
+				className="submit question"/>)
+	};
+
 	render() {
 		return (
+
       <div className="container">
 				<div className="split-content">
 	        <form onSubmit={this.handleSubmit} className="main-content">
@@ -73,7 +94,7 @@ class AskQuestionDisplay extends React.Component {
 							<textarea className="question-body-textarea" rows="10" onChange={this.update("body")} value={this.state.body}>
 							</textarea>
 						</div>
-						<input type="submit" value="Post Your Question" className="submit question"/>
+						{ this.renderSubmit() }
 	        </form>
 	      </div>
       </div>

@@ -1,18 +1,24 @@
 import { connect } from 'react-redux';
-import { create } from '../../actions/question_actions';
+import { create, update } from '../../actions/question_actions';
 import AskQuestionDisplay from './ask_question_display';
+import { selectAllQuestions } from '../../reducers/selectors.js';
 
 
-const mapStateToProps = ({ session, question }) => {
+const mapStateToProps = ({ session, question, questions }) => {
   const current_user = session.currentUser
   return {
+  currentQuestion : questions.currentQuestion,
+  questions : selectAllQuestions(questions),
+
   loggedIn: Boolean(current_user),
   errors: question.errors || [],
   current_user: current_user};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  create:  (currentQuestion) => dispatch(create(currentQuestion))
+  create:  (currentQuestion) => dispatch(create(currentQuestion)),
+  update:  (currentQuestion) => dispatch(update(currentQuestion))
+
 });
 
 export default connect(

@@ -18,7 +18,7 @@ export const create = (question) => {
 export const update = (question) => {
   return $.ajax({
     method: 'PATCH',
-    url: '/api/questions',
+    url: `/api/questions/${question.id}`,
     data: {question}
   });
 };
