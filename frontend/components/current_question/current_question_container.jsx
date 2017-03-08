@@ -5,12 +5,12 @@ import { create, destroy } from '../../actions/vote_actions';
 import CurrentQuestionDisplay from './current_question_display';
 import { selectAllQuestions } from '../../reducers/selectors.js';
 
-const mapStateToProps = ({ session, question }) => {
+const mapStateToProps = ({ session, questions }) => {
   const current_user = session.currentUser
   return {
   loggedIn: Boolean(current_user),
   current_user: current_user,
-  question
+  currentQuestion: questions.currentQuestion
   }
 };
 

@@ -16,6 +16,7 @@ class CurrentQuestionDisplay extends React.Component {
 		this.state = { currentQuestion : {answers:{ }}, errors: {}};
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 		this.handleVote = this.handleVote.bind(this)
+		this.state.currentQuestion = {answers:{}}
 	}
 
 	componentDidMount(){
@@ -24,7 +25,8 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentWillReceiveProps(newProps){
-		this.state = newProps.question;
+
+		this.state.currentQuestion = newProps.currentQuestion;
 	}
 
 
@@ -40,7 +42,8 @@ class CurrentQuestionDisplay extends React.Component {
   }
 
 	selfQuestionTools(){
-		if (this.props.current_user === null || this.props.current_user.id === this.state.currentQuestion.author.id ){
+
+		if (this.props.current_user === null || this.props.current_user.id !== this.state.currentQuestion.author.id ){
 			return <div></div>
 		}
 		return <Link to={`/ask/${this.props.params.id}`}>Edit</Link>
@@ -139,7 +142,6 @@ class CurrentQuestionDisplay extends React.Component {
 
 			this.props.destroy(vote)
 		}
-		debugger
 		this.props.show(currentQuestion.id)
 	}
 // e.preventDefault();
@@ -198,7 +200,6 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	render() {
-		debugger
 		return (
       <div className="container">
         {this.renderQuestionHeader()}

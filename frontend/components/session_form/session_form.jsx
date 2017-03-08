@@ -100,7 +100,7 @@ class SessionForm extends React.Component {
 					<div className="sub-header-session">
 						{this.navLink()}
 					</div>
-					<h2>{"Create your Heap Spill account. It's free and only takes a minute."}</h2>
+					<h2>{"Create your Heap Spill account. It's free and only takes a minute."}</h2><br/>
 					<form onSubmit={this.handleSubmit} className="login-form-box">
 
 						<div className="login-form">
