@@ -52,6 +52,7 @@ const headerMain = (currentUser, logout, path) => (
         <hgroup className="header-group">
           <div className="header-group-left">
             <Link to="/" className="link-header">
+              <img className="logo" src={window.images.logo}/>
               <h1>HeapSpill</h1>
             </Link>
             <input className="search-bar" placeholder="Search..."></input>
