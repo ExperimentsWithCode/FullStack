@@ -45,7 +45,6 @@ class AskQuestionDisplay extends React.Component {
 				);
 		} else {
 			this.props.update(currentQuestion).then(({currentQuestion})=>{
-				debugger
 				this.props.router.push(`/question/${currentQuestion.id}`)}
 			);
 		}
