@@ -20,14 +20,12 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
       return {questions: action.questions, currentQuestion: _nullCurrentQuestion}
     case RECEIVE_CURRENT_QUESTION:
       const currentQuestion = action.currentQuestion;
-      return merge({}, _nullQuestion, {
-        currentQuestion
-      });
+      return merge({}, state, {currentQuestion});
     case REMOVE_CURRENT_QUESTION:
-      return merge({}, _nullQuestion);
+      return merge({}, state);
     case RECEIVE_QUESTION_ERRORS:
       const errors = action.errors;
-      return merge({}, _nullQuestion, {
+      return merge({}, state, {
         errors
       });
     default:

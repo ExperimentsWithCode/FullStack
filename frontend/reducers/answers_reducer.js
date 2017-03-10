@@ -29,9 +29,7 @@ const AnswerReducer = (state = _nullAnswer, action) => {
       return merge({}, _nullAnswer);
     case RECEIVE_ANSWER_ERRORS:
       const errors = action.errors;
-      return merge({}, _nullAnswer, {
-        errors
-      });
+      return Object.assign({}, state, {errors});
     default:
       return state;
   }

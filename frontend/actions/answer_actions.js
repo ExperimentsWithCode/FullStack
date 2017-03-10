@@ -54,6 +54,6 @@ export const removeCurrentAnswer = currentAnswer => ({
 });
 
 export const receiveAnswerErrors = errors => ({
-  type: RECEIVE_ANSWER_ERRORS,
-  errors
-});
+    type: RECEIVE_ANSWER_ERRORS,
+    errors
+  });

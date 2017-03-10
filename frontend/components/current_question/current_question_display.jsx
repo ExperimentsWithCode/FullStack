@@ -25,7 +25,6 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentWillReceiveProps(newProps){
-
 		this.state.currentQuestion = newProps.currentQuestion;
 	}
 
