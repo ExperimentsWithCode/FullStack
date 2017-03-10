@@ -14,14 +14,18 @@ Inspired by Stack Overflow, HeapSpill seeks to allows users to solve problems en
 * Vote on Answers
 
 ###To-Do:
-* [/] Update Create forms to also edit (now works for questions. Still need to do for answers)
-* [ ] Update Votes to work on questions too
-* [ ] Notifications
-* [ ] Pagination
 * [ ] Search (pg_search)
-* [ ] Sort
+* [ ] Auto Login Guest
+* [ ] Sort (https://www.npmjs.com/package/react-fuzzy)
+* [ ] AutoSuggest Question on Ask Question
+* [ ] Update Create form to also edit Answers
+* [ ] Update Votes to work on questions too
 * [ ] Tags
+* [ ] Pagination
 * [ ] Profiles
-* [ ] AutoSuggest Question on Ask Question (https://www.npmjs.com/package/react-fuzzy)
+* [ ] Notifications
 * [X] Favicon
 * [X] Logo
+* [X] Update Create form to also edit Questions
+* [X] Display answer without refresh
+* [X] Render Answer Errors on Submit

@@ -19,7 +19,6 @@ class AnswerFormDisplay extends React.Component {
 	}
 
 	componentDidUpdate() {
-
 	}
 
 	ensureLoggedIn() {
@@ -41,12 +40,14 @@ class AnswerFormDisplay extends React.Component {
 		this.props.create(this.state);
 		let author_id
 		this.props.receiveCurrentAnswer
-		this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
-		this.setState({ body: "", author_id: author_id, question_id: this.props.params.id})
-		this.props.receiveCurrentAnswer
+		this.props.show(this.props.params.id);
+		// this.props.current_user === null ? author_id = false : author_id = this.props.current_user.id
+		// this.setState({ body: "", author_id: author_id, question_id: this.props.params.id})
+
 	}
 
 	renderErrors() {
+		debugger
 		if (this.props.errors.length > 0){
 		return(
 			<ul className="errors" >
@@ -62,7 +63,8 @@ class AnswerFormDisplay extends React.Component {
 	render() {
 		return (
       <form onSubmit={this.handleSubmit} className="main-content">
-        <h3>Your Answer</h3>
+				<br/>
+				<h3>Your Answer</h3>
 
         {this.renderErrors()}
         <div className="question-body-input" >
