@@ -110,10 +110,11 @@ class CurrentQuestionDisplay extends React.Component {
 
 	voted(answer, val) {
 		let user_voted = false;
+		let current_user_id = this.props.current_user ? this.props.current_user.id : -1
 		//check if user voted on this question
 		if (answer.votes.length > 0){
 			answer.votes.forEach((vote)=> {
-				if (vote.user_id === this.props.current_user.id && vote.value === val){
+				if (vote.user_id === current_user_id && vote.value === val){
 					user_voted = true
 				};
 			});
