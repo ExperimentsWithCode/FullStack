@@ -9,6 +9,7 @@ class QuestionsDisplay extends React.Component {
 		super(props);
 		this.formType = this.props.formType;
 		this.state = this.props.questions;
+		this.route = this.props.routeParams.wildcard
 	}
 
 	componentDidMount(){
@@ -22,7 +23,15 @@ class QuestionsDisplay extends React.Component {
 
 
 	componentDidUpdate() {
+		if (this.props.routeParams.wildcard !== this.route){
+			this.route = this.props.routeParams.wildcard
+			if (this.props.routeParams.wildcard === 'active'){
+				this.props.sortQuestionsActive()
+			} else if (this.props.routeParams.wildcard === 'newest'){
+				this.props.sortQuestionsNewest()
+			}
 
+		}
 	}
 
 
@@ -50,7 +59,7 @@ class QuestionsDisplay extends React.Component {
 					<div className="main-content">
 						<div className="sub-header-content">
 							<h3>All Questions</h3>
-							<MainNavDisplay currentLocation={location.hash.slice(2)} />
+							<MainNavDisplay currentLocation={location.hash.slice(2)}/>
 						</div>
 						{this.renderQuestionsList()}
 					</div>

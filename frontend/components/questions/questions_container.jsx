@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { index } from '../../actions/question_actions';
+import { index, sortQuestionsActive, sortQuestionsNewest } from '../../actions/question_actions';
 import QuestionsDisplay from './questions_display';
 import { selectAllQuestions } from '../../reducers/selectors.js';
 
@@ -8,7 +8,7 @@ const mapStateToProps = ({ session, questions }) => {
   questions = questions || {questions: {}}
   debugger
   return {
-  questions : selectAllQuestions(questions),
+  questions : questions,
   loggedIn: Boolean(current_user),
   current_user: current_user,
   questions}
@@ -19,6 +19,8 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     index: () => dispatch(index()),
+    sortQuestionsActive: () => dispatch(sortQuestionsActive()),
+    sortQuestionsNewest: () => dispatch(sortQuestionsNewest()),
     formType
   };
 };
