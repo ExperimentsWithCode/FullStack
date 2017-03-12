@@ -5,6 +5,10 @@ export const RECEIVE_CURRENT_QUESTION = "RECEIVE_CURRENT_QUESTION";
 export const REMOVE_CURRENT_QUESTION = "REMOVE_CURRENT_QUESTION";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_QUESTION_ERRORS = "RECEIVE_QUESTION_ERRORS";
+export const SORT_QUESTIONS_NEWEST = "SORT_QUESTIONS_NEWEST"
+export const SORT_QUESTIONS_ACTIVE = "SORT_QUESTIONS_ACTIVE"
+
+
 
 export const index = currentQuestion => dispatch => (
   APIUtil.index()
@@ -55,5 +59,18 @@ export const removeCurrentQuestion = currentQuestion => ({
 
 export const receiveQuestionErrors = errors => ({
   type: RECEIVE_QUESTION_ERRORS,
+  errors
+});
+
+export const sortQuestionsActive = errors => {
+  debugger
+  return (
+  {
+    type: SORT_QUESTIONS_ACTIVE,
+    errors
+  });
+}
+export const sortQuestionsNewest = errors => ({
+  type: SORT_QUESTIONS_NEWEST,
   errors
 });

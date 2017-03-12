@@ -1,4 +1,7 @@
-import { RECEIVE_QUESTIONS, RECEIVE_CURRENT_QUESTION, REMOVE_CURRENT_QUESTION, RECEIVE_QUESTION_ERRORS } from '../actions/question_actions';
+import { RECEIVE_QUESTIONS, RECEIVE_CURRENT_QUESTION,
+  REMOVE_CURRENT_QUESTION, RECEIVE_QUESTION_ERRORS,
+  SORT_QUESTIONS_ACTIVE, SORT_QUESTIONS_NEWEST } from '../actions/question_actions';
+import { selectAllQuestions } from './selectors.js';
 
 import merge from 'lodash/merge';
 
@@ -28,6 +31,12 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
       return merge({}, state, {
         errors
       });
+    case SORT_QUESTIONS_ACTIVE:
+      return {questions: selectAllQuestions(state, "active"),
+        currentQuestion: _nullCurrentQuestion}
+    case SORT_QUESTIONS_NEWEST:
+      return {questions: selectAllQuestions(state, "newest"),
+        currentQuestion: _nullCurrentQuestion}
     default:
       return state;
   }
