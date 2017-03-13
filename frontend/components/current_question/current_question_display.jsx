@@ -16,7 +16,6 @@ class CurrentQuestionDisplay extends React.Component {
 		this.state = { currentQuestion : {answers:{ }}, errors: {}};
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 		this.handleVote = this.handleVote.bind(this)
-		this.state.currentQuestion = {answers:{}}
 	}
 
 	componentDidMount(){
@@ -25,7 +24,8 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentWillReceiveProps(newProps){
-		this.state.currentQuestion = newProps.currentQuestion;
+		this.state = newProps;
+		debugger
 	}
 
 
@@ -110,8 +110,8 @@ class CurrentQuestionDisplay extends React.Component {
 	voted(answer, val) {
 		let user_voted = false;
 		let current_user_id = this.props.current_user ? this.props.current_user.id : -1
-		//check if user voted on this question
-		if (answer.votes.length > 0){
+		debugger
+ 		if (answer.votes.length > 0){
 			answer.votes.forEach((vote)=> {
 				if (vote.user_id === current_user_id && vote.value === val){
 					user_voted = true

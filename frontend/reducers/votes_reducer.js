@@ -8,7 +8,7 @@ import merge from 'lodash/merge';
 
 const _nullVote = Object.freeze({
   currentVote: {},
-  votes: {},
+  votes: [],
   errors: []
 });
 
@@ -20,16 +20,16 @@ const VoteReducer = (state = _nullVote, action) => {
     case RECEIVE_CURRENT_VOTE:
       // const currentVote = action.currentVote;
       const newVote = {[action.currentVote.id]: action.currentVote};
-      return merge({}, state, {
-        newVote
-      });
+      return merge({}, state, {newVote});
     case RECEIVE_VOTES:
       return {questions: action.votes}
     case REMOVE_CURRENT_VOTE:
-      return merge({}, _nullVote);
+      let test = merge({}, state)
+      debugger
+      return merge({}, state);
     case RECEIVE_VOTE_ERRORS:
       const errors = action.errors;
-      return merge({}, _nullVote, {
+      return merge({}, state, {
         errors
       });
     default:
