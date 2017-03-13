@@ -23,7 +23,7 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
       return {questions: action.questions, currentQuestion: _nullCurrentQuestion}
     case RECEIVE_CURRENT_QUESTION:
       const currentQuestion = action.currentQuestion;
-      return merge({}, state, {currentQuestion});
+      return {questions: state.questions, currentQuestion:currentQuestion};
     case REMOVE_CURRENT_QUESTION:
       return merge({}, state);
     case RECEIVE_QUESTION_ERRORS:

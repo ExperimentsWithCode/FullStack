@@ -32,7 +32,7 @@ export const show = currentVote => dispatch => (
 
 export const destroy = currentVote => dispatch => (
   APIUtil.destroy(currentVote)
-    .then(currentVote => dispatch(receiveCurrentVote(currentVote)),
+    .then(currentVote => dispatch(removeCurrentVote(currentVote)),
       err => dispatch(receiveVoteErrors(err.responseJSON)))
 );
 

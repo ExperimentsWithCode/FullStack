@@ -3,7 +3,8 @@ import { receiveCurrentUser, receiveQuestionErrors } from '../actions/session_ac
 export const index = () => {
   return $.ajax({
     method: 'GET',
-    url: '/api/questions'
+    url: '/api/questions',
+    data: {query: "test"}
   });
 };
 
