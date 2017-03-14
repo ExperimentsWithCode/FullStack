@@ -63,7 +63,6 @@ export const receiveQuestionErrors = errors => ({
 });
 
 export const sortQuestionsActive = errors => {
-  debugger
   return (
   {
     type: SORT_QUESTIONS_ACTIVE,

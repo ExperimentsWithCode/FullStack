@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:body, :title]
 
   attr_reader :password
   attr_reader :confirm
@@ -14,7 +16,7 @@ class Question < ActiveRecord::Base
   foreign_key: :author_id,
   primary_key: :id
   )
-  
+
   has_many(
   :answers,
   class_name: "Answer",

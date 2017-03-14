@@ -5,7 +5,6 @@ import AnswerFormDisplay from './answer_form_display';
 
 
 const mapStateToProps = (state) => {
-  debugger
   const current_user = state.session.currentUser
   return {
   loggedIn: Boolean(current_user),

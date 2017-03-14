@@ -38,6 +38,7 @@ const Root = ({ store }) => {
           <Route path="/signup" component={SessionFormContainer} onEnter={_redirectIfLoggedIn} />
           <Route path="/ask" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
           <Route path="/ask/:id" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
+          <Route path="/search/:query" component={QuestionsContainer} />
           <Route path="/question/:id" component={CurrentQuestionContainter} />
           <Route path="/question/:id/:wildcard" component={CurrentQuestionContainter} />
 

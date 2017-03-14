@@ -23,7 +23,6 @@ const active = (q1, q2) => {
     let right = r1 > r2 ? r1 : r2
     left = new Date(left);
     right = new Date(right);
-    debugger
     if (left < right){return 1}
     else if (left > right){return -1}
     else {return 0}

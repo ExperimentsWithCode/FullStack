@@ -39,7 +39,7 @@ class QuestionsDisplay extends React.Component {
 
 		if (this.state) {
 			if (this.state.questions.length !== undefined ) {
-
+				debugger
 				const lineItems = this.state.questions.map( (question) => (< QuestionLineItem key={question.id} question={question} />));
 				return (
 					<ul className="questions-list">
@@ -53,6 +53,7 @@ class QuestionsDisplay extends React.Component {
 
 
 	render() {
+		debugger
 		return (
       <div className="container">
   			<div className="split-content">

@@ -25,7 +25,6 @@ const VoteReducer = (state = _nullVote, action) => {
       return {questions: action.votes}
     case REMOVE_CURRENT_VOTE:
       let test = merge({}, state)
-      debugger
       return merge({}, state);
     case RECEIVE_VOTE_ERRORS:
       const errors = action.errors;

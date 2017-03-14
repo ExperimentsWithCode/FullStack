@@ -3,7 +3,9 @@ import { Link } from 'react-router';
 import AuthorBoxDisplay from '../user_box/author_box_display'
 
 
-const QuestionLineItem = ({ question, router }) => (
+const QuestionLineItem = ({ question, router }) => {
+  debugger
+  return (
   <li className="questions-list-item">
     <div className="question-stat-bar">
       <span className="list-view-score">{question.answer_count}</span>
@@ -18,6 +20,6 @@ const QuestionLineItem = ({ question, router }) => (
     </div>
 
   </li>
-);
+);}
 
 export default QuestionLineItem;
