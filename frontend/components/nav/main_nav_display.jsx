@@ -16,9 +16,14 @@ export const MainNavDisplay = ({currentLocation}) => {  //newest, active, featur
 	return (
 		<div className="tabs">
 			<Link to="newest" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
-			<Link to="frequent" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "frequent"})}`}>frequent</Link>
-			<Link to="votes" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "votes"})}`}>votes</Link>
 			<Link to="active" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
 		</div>
 	);
 }
+
+// Add back once functionality is added
+	// Needs Views Tracked
+	// <Link to="frequent" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "frequent"})}`}>frequent</Link>
+
+	// Needs votes on questions
+	// <Link to="votes" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "votes"})}`}>votes</Link>
