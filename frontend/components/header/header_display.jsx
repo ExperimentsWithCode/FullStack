@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import SearchDisplay from './search_display';
+
 
 export const headerLoggedOut = () => (
   <div className="header-group-right">
@@ -55,7 +57,7 @@ const headerMain = (currentUser, logout, path) => (
               <img className="logo" src={window.images.logo}/>
               <h1>HeapSpill</h1>
             </Link>
-            <input className="search-bar" placeholder="Search..."></input>
+            < SearchDisplay />
           </div>
           {currentUser ? headerLoggedIn(currentUser, logout) : headerLoggedOut()}
         </hgroup>
