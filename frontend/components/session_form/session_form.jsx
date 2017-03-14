@@ -1,20 +1,27 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
+const guestUsername = "guest-user"
+const guestPass = "1Y4xNQBhe1KS8vOJpHdB9A"
+
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "", password: "", email:""};
+		this.state = { username: "", password: "", email:"", errors:[]};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentWillReceiveProps(newProps){
 		if (newProps.route !== this.props.route){
-			this.state = { username: "", password: "", email:""};
+			this.state = { username: "", password: "", email:"", errors:[]};
 			this.props.clear()
 		}
 	}
 	componentDidUpdate() {
+		if (this.state.username === guestUsername &&
+				this.state.password === guestPass){
+			this.handleSubmit()
+		}
 		this.redirectIfLoggedIn();
 		// this.state = { username: "", password: "", email:""};
 	}
@@ -31,13 +38,18 @@ class SessionForm extends React.Component {
 		});
 	}
 	setGuest() {
+		// const user = {
+		// 	"username": "guest-user",
+		// 	"password": "1Y4xNQBhe1KS8vOJpHdB9A"
+		// }
+		// this.props.processForm({user});
 		return e => this.setState({
-			"username": "guest-user",
-			"password": "1Y4xNQBhe1KS8vOJpHdB9A"
+			"username": guestUsername,
+			"password": guestPass
 		});
 	}
 	handleSubmit(e) {
-		e.preventDefault();
+		if (e) e.preventDefault();
 		const user = this.state;
 		this.props.processForm({user});
 	}

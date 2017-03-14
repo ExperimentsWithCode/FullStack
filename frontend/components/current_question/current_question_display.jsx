@@ -123,6 +123,7 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	handleVote(e) {
+		e.preventDefault();
 		let id = e.currentTarget.attributes.value.value
 		let val
 		let func = (answer) => (answer.id == id)
