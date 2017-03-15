@@ -25,7 +25,6 @@ class CurrentQuestionDisplay extends React.Component {
 
 	componentWillReceiveProps(newProps){
 		this.state = newProps;
-		debugger
 	}
 
 
@@ -110,7 +109,6 @@ class CurrentQuestionDisplay extends React.Component {
 	voted(answer, val) {
 		let user_voted = false;
 		let current_user_id = this.props.current_user ? this.props.current_user.id : -1
-		debugger
  		if (answer.votes.length > 0){
 			answer.votes.forEach((vote)=> {
 				if (vote.user_id === current_user_id && vote.value === val){
