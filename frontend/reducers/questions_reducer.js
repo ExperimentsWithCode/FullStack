@@ -24,7 +24,6 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
     case RECEIVE_CURRENT_QUESTION:
       // const test = merge({}, state, { currentQuestion: action.currentQuestion});
       const temp = merge({}, state)
-      debugger
       temp.currentQuestion = action.currentQuestion
       return temp
       // debugger
