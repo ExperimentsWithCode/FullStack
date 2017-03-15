@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :update, :destroy, :show]
     resources :votes, only: [:create, :update, :destroy, :show]
   end
+  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
+
 
   root "static_pages#root"
-  get '/.well-known/acme-challenge/:id' => '"static_pages#letsencrypt'
 
 end
 
