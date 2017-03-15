@@ -19,6 +19,7 @@ class Question < ActiveRecord::Base
 
   has_many(
   :answers,
+  -> {order('created_at desc')},
   class_name: "Answer",
   foreign_key: :question_id,
   primary_key: :id

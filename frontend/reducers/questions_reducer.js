@@ -20,7 +20,7 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_QUESTIONS:
-      return {questions: action.questions, currentQuestion: _nullCurrentQuestion}
+      return {questions: action.questions}
     case RECEIVE_CURRENT_QUESTION:
       const currentQuestion = action.currentQuestion;
       return {questions: state.questions, currentQuestion:currentQuestion};
@@ -32,11 +32,9 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
         errors
       });
     case SORT_QUESTIONS_ACTIVE:
-      return {questions: selectAllQuestions(state, "active"),
-        currentQuestion: _nullCurrentQuestion}
+      return {questions: selectAllQuestions(state, "active")}
     case SORT_QUESTIONS_NEWEST:
-      return {questions: selectAllQuestions(state, "newest"),
-        currentQuestion: _nullCurrentQuestion}
+      return {questions: selectAllQuestions(state, "newest")}
     default:
       return state;
   }

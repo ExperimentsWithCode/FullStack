@@ -24,6 +24,7 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentWillReceiveProps(newProps){
+		debugger
 		if (this.state !== newProps){
 			this.state = newProps;
 		}
@@ -50,47 +51,36 @@ class CurrentQuestionDisplay extends React.Component {
 
 	}
 	renderQuestion() {
-		if (this.state) {
-			if (this.state.currentQuestion.id !== undefined ) {
-				return (
-          <div className="question-display">
-            <div className="question-display-content">
-              <div className="question-stat-bar">
-                <span className="list-view-score">{this.state.currentQuestion.answers.length}</span>
-                <span className="list-view-label">answers</span>
-              </div>
-              <p>{this.state.currentQuestion.body}</p>
-            </div>
-            <div className="question-display-content">
-              <div className="question-stat-bar">
-              </div>
-              <div className="question-display-footer">
-                {this.selfQuestionTools()}
-								{AuthorBoxDisplay(this.state.currentQuestion.author, this.state.currentQuestion.created_at )}
-              </div>
-            </div>
+		return (
+      <div className="question-display">
+        <div className="question-display-content">
+          <div className="question-stat-bar">
+            <span className="list-view-score">{this.state.currentQuestion.answers.length}</span>
+            <span className="list-view-label">answers</span>
           </div>
-
-			);
-			}
-		}
-		return (<p> Nothing to render </p>);
+          <p>{this.state.currentQuestion.body}</p>
+        </div>
+        <div className="question-display-content">
+          <div className="question-stat-bar">
+          </div>
+          <div className="question-display-footer">
+            {this.selfQuestionTools()}
+						{AuthorBoxDisplay(this.state.currentQuestion.author, this.state.currentQuestion.created_at )}
+          </div>
+        </div>
+      </div>
+		);
 	}
-  renderQuestionHeader() {
-    if (this.state) {
-			if (this.state.currentQuestion !== undefined ) {
 
-				return (
-          <div className="question-header">
-            <div className="sub-header-content full">
-              <h2>{this.state.currentQuestion.title}</h2>
-              <Link to="/ask" className='submit'>Ask Question</Link>
-            </div>
-          </div>
-			);
-			}
-		}
-		return (<p> Nothing to render </p>);
+  renderQuestionHeader() {
+		return (
+      <div className="question-header">
+        <div className="sub-header-content full">
+          <h2>{this.state.currentQuestion.title}</h2>
+          <Link to="/ask" className='submit'>Ask Question</Link>
+        </div>
+      </div>
+		);
 	}
 
 	renderAnswersHeader(){
@@ -192,8 +182,6 @@ class CurrentQuestionDisplay extends React.Component {
 					  </div>
 				</div>
 			)
-
-
 		}
 		else{
 			return <AnswerFormContainer />
@@ -201,25 +189,26 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	render() {
-		return (
-      <div className="container">
-        {this.renderQuestionHeader()}
-  			<div className="split-content">
-					<div className="main-content">
-            <div className="questions-list">
-              {this.renderQuestion()}
-            </div>
-						{this.renderAnswersHeader()}
-						{this.renderAnswersList()}
-						{this.renderAnswerForm()}
-					</div>
-					<div className="side-content">
-					</div>
-        </div>
-      </div>
-		);
+		if (this.state.currentQuestion && String(this.state.currentQuestion.id) === this.props.params.id ){
+			return (
+	      <div className="container">
+	        {this.renderQuestionHeader()}
+	  			<div className="split-content">
+						<div className="main-content">
+	            <div className="questions-list">
+	              {this.renderQuestion()}
+	            </div>
+							{this.renderAnswersHeader()}
+							{this.renderAnswersList()}
+							{this.renderAnswerForm()}
+						</div>
+						<div className="side-content">
+						</div>
+	        </div>
+	      </div>
+			);
+		} else return (<p> Nothing to render </p>);
 	}
-
 }
 
 export default withRouter(CurrentQuestionDisplay);
