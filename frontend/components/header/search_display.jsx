@@ -29,7 +29,6 @@ class SeachDisplay extends React.Component {
 	}
 
 	render() {
-		debugger
 		return (
       <form className="search-form" onSubmit={this.handleSubmit} >
         <input className="search-bar" onChange={this.update("query")}  placeholder="Search..."></input>

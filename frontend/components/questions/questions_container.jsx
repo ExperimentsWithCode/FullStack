@@ -6,7 +6,6 @@ import { selectAllQuestions } from '../../reducers/selectors.js';
 const mapStateToProps = ({ session, questions }) => {
   const current_user = session.currentUser
   questions = questions || {questions: {}}
-  debugger
   return {
   questions : questions,
   loggedIn: Boolean(current_user),

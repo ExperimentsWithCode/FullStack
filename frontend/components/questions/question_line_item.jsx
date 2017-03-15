@@ -4,7 +4,6 @@ import AuthorBoxDisplay from '../user_box/author_box_display'
 
 
 const QuestionLineItem = ({ question, router }) => {
-  debugger
   return (
   <li className="questions-list-item">
     <div className="question-stat-bar">
