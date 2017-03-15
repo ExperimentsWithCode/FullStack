@@ -24,7 +24,6 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentWillReceiveProps(newProps){
-		debugger
 		if (this.state !== newProps){
 			this.state = newProps;
 		}
@@ -84,7 +83,7 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	renderAnswersHeader(){
-		if (this.state.currentQuestion.answers !== undefined){
+		if (this.state.currentQuestion && String(this.state.currentQuestion.id) === this.props.params.id ){
 			return (
 				<div className="sub-header-content">
 					<h3>{`${this.state.currentQuestion.answers.length} Answers`}</h3>
@@ -140,9 +139,7 @@ class CurrentQuestionDisplay extends React.Component {
 // e.currentTarget.attributes.value.value
 // x = this.state.currentQuestion.answers.find((answer, id)=> answer.id === id)
 	renderAnswersList() {
-		if (this.state) {
 			if (this.state.currentQuestion.answers.length !== undefined ) {
-
 				const lineItems = this.state.currentQuestion.answers.map( (answer) => (
 					<li className="questions-list-item" key={answer.id}>
 						<div className="question-stat-bar">
@@ -156,16 +153,14 @@ class CurrentQuestionDisplay extends React.Component {
 							{ AuthorBoxDisplay(answer.author, answer.created_at, true )}
 						</div>
 					</li>
-
 				));
 				return (
 					<ul className="questions-list">
 						{lineItems}
 					</ul>
-			);
+				);
 			}
-		}
-		return (<p> Loading... </p>)
+			else return (<p> Loading... </p>)
 	}
 
 
@@ -207,7 +202,7 @@ class CurrentQuestionDisplay extends React.Component {
 	        </div>
 	      </div>
 			);
-		} else return (<p> Nothing to render </p>);
+		} else return (<div className="container"><p> loading.. </p></div>);
 	}
 }
 
