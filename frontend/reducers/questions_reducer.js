@@ -20,10 +20,15 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_QUESTIONS:
-      return {questions: action.questions}
+      return merge({}, state, {questions: action.questions});
     case RECEIVE_CURRENT_QUESTION:
-      const currentQuestion = action.currentQuestion;
-      return {questions: state.questions, currentQuestion:currentQuestion};
+      // const test = merge({}, state, { currentQuestion: action.currentQuestion});
+      const temp = merge({}, state)
+      debugger
+      temp.currentQuestion = action.currentQuestion
+      return temp
+      // debugger
+      // return merge({}, state, { currentQuestion: action.currentQuestion});
     case REMOVE_CURRENT_QUESTION:
       return merge({}, state);
     case RECEIVE_QUESTION_ERRORS:
