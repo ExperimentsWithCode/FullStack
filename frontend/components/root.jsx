@@ -39,6 +39,7 @@ const Root = ({ store }) => {
           <Route path="/ask" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
           <Route path="/ask/:id" component={AskQuestionContainer} onEnter={_ensureLoggedIn} />
           <Route path="/search/:query" component={QuestionsContainer} />
+          <Route path="/search/:query/:wildcard" component={QuestionsContainer} />
           <Route path="/question/:id" component={CurrentQuestionContainter} />
           <Route path="/question/:id/:wildcard" component={CurrentQuestionContainter} />
 
