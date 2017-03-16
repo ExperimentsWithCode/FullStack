@@ -5,7 +5,7 @@ const activeLink = ({currentLocation, linkPath}) => {
 	if (currentLocation.includes(linkPath)){
 		return " active";
 	} else if (currentLocation.split('/').length === 2 ){
-		if (linkPath === "votes" ){
+		if (linkPath === "active" ){
 			return " active";
 		}
 	}
