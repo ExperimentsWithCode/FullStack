@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
+const posLocations = ['active', 'newest']
+
 const activeLink = ({currentLocation, linkPath}) => {
-	debugger
-	if (linkPath === currentLocation){
+	let clSplit = currentLocation.split("/")
+	let reducedLocation = clSplit[clSplit.length-1]
+	if (linkPath === reducedLocation){
 		return " active";
-	} else if ("" === currentLocation || currentLocation.includes('search')){
+	} else if ("" === reducedLocation){
+		if (linkPath === "newest" ){
+			return " active";
+		}
+	} else if (!posLocations.includes(reducedLocation)){
+
 		if (linkPath === "newest" ){
 			return " active";
 		}
@@ -13,11 +21,22 @@ const activeLink = ({currentLocation, linkPath}) => {
 	return "";
 }
 
+const currentLocationReudcer = (currentLocation) => {
+	let clSplit = currentLocation.split("/")
+	let reducedLocation = ""
+	if (clSplit.length === 1) reducedLocation = "";
+	else if (clSplit.length === 2) reducedLocation = currentLocation;
+	else if (clSplit.length === 3) reducedLocation = `${clSplit[0]}/${clSplit[1]}`;
+	return reducedLocation
+}
+
+
 export const MainNavDisplay = ({currentLocation}) => {  //newest, active, featured, frequent
+	let reducedLocation = currentLocationReudcer(currentLocation)
 	return (
 		<div className="tabs">
-			<Link to="newest" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
-			<Link to="active" className={`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
+			<Link to={`${reducedLocation}/newest`}className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
+			<Link to={`${reducedLocation}/active`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
 		</div>
 	);
 }
