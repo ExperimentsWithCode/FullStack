@@ -1,3 +1,5 @@
+
+
 class Api::QuestionsController < ApplicationController
 
 	def create
@@ -19,7 +21,11 @@ class Api::QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all.includes(:author, :answers).order('created_at desc')
+		if params['query'] == "false"
+			@questions = Question.all.includes(:author, :answers).order('created_at desc')
+		else
+			@questions = Question.search(params['query']).includes(:author, :answers).order('created_at desc')
+		end
 		render :index
 	end
 

@@ -32,14 +32,14 @@ const active = (q1, q2) => {
 export const selectAllQuestions = (questions, type ) => {
   let sorted_questions
   if (questions.questions[0] !== undefined){
-    sorted_questions = questions.questions.sort( determineSortType(type) )
+    sorted_questions = questions.questions.sort( determineSortTypeQ(type) )
   } else {
     sorted_questions = {};
   }
   return sorted_questions;
 }
 
-const determineSortType = (type) => {
+const determineSortTypeQ = (type) => {
   let sortMethod
   if (type === "newest"){
     sortMethod = newest
@@ -48,19 +48,55 @@ const determineSortType = (type) => {
   } else { sortMethod = newest }
   return sortMethod
 }
-// export const selectSearchedQuestions = (questions, query ) => {
-//   let sorted_questions
-//   if (questions.questions[0] !== undefined){
-//     sorted_questions = questions.questions.sort( (q1, q2, query) => {
-//       query.split = query.split(" ")
-//       let left = new Date(q1.created_at);
-//       let right = new Date(q2.created_at);
-//       if (left < right){return 1}
-//       else if (left > right){return -1}
-//       else {return 0}
-//     } )
-//   } else {
-//     sorted_questions = {};
-//   }
-//   return sorted_questions;
-// }
+
+
+
+export const selectAllAnswers = (state, type ) => {
+  let answers = state.currentQuestion.answers
+  let sorted_answers
+  if (answers[0] !== undefined){
+    sorted_answers = answers.sort( determineSortTypeA(type) )
+  } else {
+    sorted_answers = {};
+  }
+  return sorted_answers;
+}
+
+
+const determineSortTypeA = (type) => {
+  let sortMethod
+  if (type === "active"){
+    sortMethod = answersActive
+  } else if (type === "oldest"){
+    sortMethod = answersOldest
+  } else if (type === "votes"){
+      sortMethod = answersVotes
+  } else { sortMethod = answersVotes }
+  return sortMethod
+}
+
+
+
+const answersActive = (a1, a2) => {
+    let left = new Date(a1.updated_at);
+    let right = new Date(a2.updated_at);
+    if (left < right){return 1}
+    else if (left > right){return -1}
+    else {return 0}
+  }
+
+const answersOldest = (a1, a2) => {
+    let left = new Date(a1.created_at);
+    let right = new Date(a2.created_at);
+    if (left < right){return -1}
+    else if (left > right){return 1}
+    else {return 0}
+  }
+
+const answersVotes = (a1, a2) => {
+    let left = a1.vote_count
+    let right = a2.vote_count;
+    if (left < right){return 1}
+    else if (left > right){return -1}
+    else {return 0}
+  }

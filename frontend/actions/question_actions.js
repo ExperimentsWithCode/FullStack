@@ -10,8 +10,8 @@ export const SORT_QUESTIONS_ACTIVE = "SORT_QUESTIONS_ACTIVE"
 
 
 
-export const index = currentQuestion => dispatch => (
-  APIUtil.index()
+export const index = query => dispatch => (
+  APIUtil.index(query)
     .then(questions => dispatch(receiveQuestions(questions)),
       err => dispatch(receiveQuestionErrors(err.responseJSON)))
 );

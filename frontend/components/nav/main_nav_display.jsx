@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 
 const activeLink = ({currentLocation, linkPath}) => {
+	debugger
 	if (linkPath === currentLocation){
 		return " active";
-	} else if ("" === currentLocation){
+	} else if ("" === currentLocation || currentLocation.includes('search')){
 		if (linkPath === "newest" ){
 			return " active";
 		}

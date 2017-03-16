@@ -10,10 +10,15 @@ class QuestionsDisplay extends React.Component {
 		this.formType = this.props.formType;
 		this.state = this.props.questions;
 		this.route = this.props.routeParams.wildcard
+		this.query = this.props.routeParams.query
 	}
 
 	componentDidMount(){
-		this.props.index();
+		if (this.props.routeParams.query === undefined){
+			this.props.index();
+		} else {
+			this.props.index(decodeURI(this.props.routeParams.query));
+		}
 	}
 
 
@@ -30,8 +35,14 @@ class QuestionsDisplay extends React.Component {
 			} else if (this.props.routeParams.wildcard === 'newest'){
 				this.props.sortQuestionsNewest()
 			}
-
-		}
+		} else if (this.props.routeParams.query !== this.query){
+				this.query = this.props.routeParams.query
+				if (this.props.routeParams.query === undefined){
+					this.props.index();
+				} else {
+					this.props.index(decodeURI(this.props.routeParams.query));
+				}
+			}
 	}
 
 

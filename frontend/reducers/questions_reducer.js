@@ -1,7 +1,11 @@
 import { RECEIVE_QUESTIONS, RECEIVE_CURRENT_QUESTION,
   REMOVE_CURRENT_QUESTION, RECEIVE_QUESTION_ERRORS,
   SORT_QUESTIONS_ACTIVE, SORT_QUESTIONS_NEWEST } from '../actions/question_actions';
-import { selectAllQuestions } from './selectors.js';
+import {
+    SORT_ANSWERS_OLDEST,
+    SORT_ANSWERS_VOTES,
+    SORT_ANSWERS_ACTIVE } from '../actions/answer_actions';
+import { selectAllQuestions, selectAllAnswers } from './selectors.js';
 
 import merge from 'lodash/merge';
 
@@ -18,15 +22,17 @@ const _nullCurrentQuestion = Object.freeze({
 
 const QuestionsReducer = (state = _nullQuestion, action) => {
   Object.freeze(state);
+  let tempState
   switch(action.type) {
     case RECEIVE_QUESTIONS:
-      return merge({}, state, {questions: action.questions});
+      tempState = merge({}, state)
+      tempState.questions =  action.questions
+      return tempState;
     case RECEIVE_CURRENT_QUESTION:
       // const test = merge({}, state, { currentQuestion: action.currentQuestion});
-      const temp = merge({}, state)
-      temp.currentQuestion = action.currentQuestion
-      return temp
-      // debugger
+      tempState = merge({}, state)
+      tempState.currentQuestion = action.currentQuestion
+      return tempState
       // return merge({}, state, { currentQuestion: action.currentQuestion});
     case REMOVE_CURRENT_QUESTION:
       return merge({}, state);
@@ -39,6 +45,18 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
       return {questions: selectAllQuestions(state, "active")}
     case SORT_QUESTIONS_NEWEST:
       return {questions: selectAllQuestions(state, "newest")}
+    case SORT_ANSWERS_ACTIVE:
+      tempState = merge({}, state)
+      tempState.currentQuestion.answers = selectAllAnswers(state, "active")
+      return tempState
+    case SORT_ANSWERS_OLDEST:
+      tempState = merge({}, state)
+      tempState.currentQuestion.answers = selectAllAnswers(state, "oldest")
+      return tempState
+    case SORT_ANSWERS_VOTES:
+      tempState = merge({}, state)
+      tempState.currentQuestion.answers = selectAllAnswers(state, "votes")
+      return tempState
     default:
       return state;
   }
