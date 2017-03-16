@@ -1,6 +1,9 @@
 class Question < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:body, :title]
+  # multisearchable :against => [:body, :title]
+  pg_search_scope :search,
+  against: [:title, :body],
+  using: [:tsearch]
 
   attr_reader :password
   attr_reader :confirm

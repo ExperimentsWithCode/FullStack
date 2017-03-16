@@ -1,19 +1,29 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router';
 
 
-class SeachDisplay extends React.Component {
+class SearchDisplay extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {query:""}
+		this.handleSubmit = this.handleSubmit.bind(this)
+		this.update = this.update.bind(this)
+		this.path = this.props.router.location.pathname
 	}
 
 	componentDidMount(){
 	}
 
 	componentDidUpdate() {
-		// if (this.props.routeParams.query !== this.state.query){
-		// 	this.query = ""
-		// }
+		if (this.path != this.props.router.location.pathname){
+			this.path = this.props.router.location.pathname
+			if (!this.props.router.location.pathname.includes('search')){
+				this.state.query = ""
+				return () => this.setState({
+					["query"]: ""
+				});
+			}
+		}
 	}
 
 
@@ -25,17 +35,18 @@ class SeachDisplay extends React.Component {
 
   handleSubmit(e) {
 		e.preventDefault();
-    this.props.router.push(`/question/${this.state.query}`)
+    this.props.router.push(`/search/${encodeURI(this.state.query)}`)
 	}
 
 	render() {
 		return (
       <form className="search-form" onSubmit={this.handleSubmit} >
-        <input className="search-bar" onChange={this.update("query")}  placeholder="Search..."></input>
+        <input className="search-bar" onChange={this.update("query")} value={this.state.query} placeholder="Search..."></input>
+				<input type="submit"></input>
       </form>
 		);
 	}
 
 }
 
-export default SeachDisplay;
+export default withRouter(SearchDisplay);

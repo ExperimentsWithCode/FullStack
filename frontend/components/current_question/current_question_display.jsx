@@ -14,6 +14,7 @@ class CurrentQuestionDisplay extends React.Component {
 		super(props);
 		this.formType = this.props.formType;
 		this.state = { currentQuestion : {answers:{ }}, errors: {}};
+		this.route = this.props.routeParams.wildcard
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 		this.handleVote = this.handleVote.bind(this)
 	}
@@ -31,7 +32,16 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	componentDidUpdate() {
-
+		if (this.props.routeParams.wildcard !== this.route){
+			this.route = this.props.routeParams.wildcard
+			if (this.props.routeParams.wildcard === 'active'){
+				this.props.sortAnswersActive()
+			} else if (this.props.routeParams.wildcard === 'oldest'){
+				this.props.sortAnswersOldest()
+			} else if (this.props.routeParams.wildcard === 'votes'){
+				this.props.sortAnswersVotes()
+			}
+		}
 	}
 
 

@@ -1,10 +1,11 @@
 import { receiveCurrentUser, receiveQuestionErrors } from '../actions/session_actions';
 
-export const index = () => {
+export const index = (query) => {
+  query = query ? query : false
   return $.ajax({
     method: 'GET',
     url: '/api/questions',
-    data: {query: "test"}
+    data: {query}
   });
 };
 

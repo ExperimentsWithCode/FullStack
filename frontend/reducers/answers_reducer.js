@@ -3,7 +3,6 @@ import {
   REMOVE_CURRENT_ANSWER,
   RECEIVE_ANSWERS,
   RECEIVE_ANSWER_ERRORS } from '../actions/answer_actions';
-
 import merge from 'lodash/merge';
 
 const _nullAnswer = Object.freeze({

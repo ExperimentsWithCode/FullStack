@@ -5,6 +5,9 @@ export const RECEIVE_CURRENT_ANSWER = "RECEIVE_CURRENT_ANSWER";
 export const REMOVE_CURRENT_ANSWER = "REMOVE_CURRENT_ANSWER";
 export const RECEIVE_ANSWERS = "RECEIVE_ANSWERS";
 export const RECEIVE_ANSWER_ERRORS = "RECEIVE_ANSWER_ERRORS";
+export const SORT_ANSWERS_OLDEST = "SORT_ANSWERS_OLDEST"
+export const SORT_ANSWERS_VOTES = "SORT_ANSWERS_VOTES"
+export const SORT_ANSWERS_ACTIVE = "SORT_ANSWERS_ACTIVE"
 
 export const index = currentAnswer => dispatch => (
   APIUtil.index()
@@ -54,6 +57,25 @@ export const removeCurrentAnswer = currentAnswer => ({
 });
 
 export const receiveAnswerErrors = errors => ({
-    type: RECEIVE_ANSWER_ERRORS,
+  type: RECEIVE_ANSWER_ERRORS,
+  errors
+});
+
+
+export const sortAnswersActive = errors => {
+  return (
+  {
+    type: SORT_ANSWERS_ACTIVE,
     errors
   });
+}
+
+export const sortAnswersVotes = errors => ({
+  type: SORT_ANSWERS_VOTES,
+  errors
+});
+
+export const sortAnswersOldest = errors => ({
+  type: SORT_ANSWERS_OLDEST,
+  errors
+});

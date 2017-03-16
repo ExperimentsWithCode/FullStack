@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   const formType = location.hash.slice(2);
 
   return {
-    index: () => dispatch(index()),
+    index: (query) => dispatch(index(query)),
     sortQuestionsActive: () => dispatch(sortQuestionsActive()),
     sortQuestionsNewest: () => dispatch(sortQuestionsNewest()),
     formType

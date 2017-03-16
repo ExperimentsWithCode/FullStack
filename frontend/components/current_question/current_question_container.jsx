@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import { show } from '../../actions/question_actions';
 import { create, destroy } from '../../actions/vote_actions';
+import { sortAnswersActive,
+  sortAnswersOldest,
+  sortAnswersVotes } from '../../actions/answer_actions';
 
 import CurrentQuestionDisplay from './current_question_display';
 import { selectAllQuestions } from '../../reducers/selectors.js';
@@ -21,6 +24,10 @@ const mapDispatchToProps = (dispatch) => {
     show: (id) => dispatch(show(id)),
     create: (vote) => dispatch(create(vote)),
     destroy: (vote) => dispatch(destroy(vote)),
+    sortAnswersActive: () => dispatch(sortAnswersActive()),
+    sortAnswersOldest: () => dispatch(sortAnswersOldest()),
+    sortAnswersVotes: () => dispatch(sortAnswersVotes()),
+
     formType
   };
 };
