@@ -42,7 +42,6 @@ class SearchDisplay extends React.Component {
 		return (
       <form className="search-form" onSubmit={this.handleSubmit} >
         <input className="search-bar" onChange={this.update("query")} value={this.state.query} placeholder="Search..."></input>
-				<input type="submit"></input>
       </form>
 		);
 	}
