@@ -13,7 +13,7 @@ class CurrentQuestionDisplay extends React.Component {
 	constructor(props) {
 		super(props);
 		this.formType = this.props.formType;
-		this.state = { currentQuestion : {answers:{ }}, errors: {}};
+		this.state = { currentQuestion : {answers:{ }}, errors: {} };
 		this.route = this.props.routeParams.wildcard
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 		this.handleVote = this.handleVote.bind(this)
@@ -122,7 +122,7 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	handleVote(e) {
-		e.preventDefault();
+		// e.preventDefault();
 		let id = e.currentTarget.attributes.value.value
 		let val
 		let func = (answer) => (answer.id == id)
@@ -153,10 +153,16 @@ class CurrentQuestionDisplay extends React.Component {
 				const lineItems = this.state.currentQuestion.answers.map( (answer) => (
 					<li className="questions-list-item" key={answer.id}>
 						<div className="question-stat-bar">
-							<span className={`upvote${this.voted(answer, 1)}`} onClick={this.handleVote} value={answer.id}></span>
+							<button className={`upvote${this.voted(answer, 1)}${
+									this.props.current_user === null ? " disabled" : ""}`}
+									disabled={this.props.current_user === null}
+									onClick={this.handleVote} value={answer.id}></button>
 							<span className="list-view-score">{answer.vote_count}</span>
 							<span className="list-view-label">Votes</span>
-							<span className={`downvote${this.voted(answer, -1)}`}  onClick={this.handleVote} value={answer.id} ></span>
+							<button className={`downvote${this.voted(answer, -1)}${
+									this.props.current_user === null ? " disabled" : ""}`}
+									disabled={this.props.current_user === null}
+									onClick={this.handleVote} value={answer.id} ></button>
 						</div>
 						<div className="question-summary">
 							<p>{answer.body}</p>

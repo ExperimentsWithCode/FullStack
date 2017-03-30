@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   # multisearchable :against => [:body, :title]
   pg_search_scope :search,
   against: [:title, :body],
-  using: [:tsearch]
+  using: [:tsearch, :trigram, :dmetaphone]
 
   attr_reader :password
   attr_reader :confirm
