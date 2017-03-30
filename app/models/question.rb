@@ -27,4 +27,10 @@ class Question < ActiveRecord::Base
   foreign_key: :question_id,
   primary_key: :id
   )
+
+  has_many(
+  :votes,
+  as: :votable
+  )
+  
 end

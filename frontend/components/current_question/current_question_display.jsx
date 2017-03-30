@@ -133,11 +133,11 @@ class CurrentQuestionDisplay extends React.Component {
 		if (e.currentTarget.attributes.class.value === "upvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "1"
-			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
+			this.props.create({votable_id: id, votable_type: 'Answer', user_id: this.props.current_user.id, value: val })
 		} else if (e.currentTarget.attributes.class.value === "downvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "-1"
-			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
+			this.props.create({votable_id: id, votable_type: 'Answer', user_id: this.props.current_user.id, value: val })
 		} else {
 
 			this.props.destroy(vote)
