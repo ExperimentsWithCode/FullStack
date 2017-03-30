@@ -1,3 +1,6 @@
+@import "variables";
+
+
 .main-content{
   width:728px;
   display:flex;
@@ -61,8 +64,8 @@
   width:100%;
   min-width: 200px;
   max-width: 33%;
-  color: #6a737c;
-  background-color:#E0EAF1;
+  color: $dark-grey;
+  background-color:$author-box;
   &.question {
     background-color: inherit;
   }
@@ -73,7 +76,7 @@
   align-items:center;
   justify-content:flex-start;
   flex-direction: row;
-  border-bottom: 1px solid #e4e6e8;
+  border-bottom: 1px solid $lighter-grey;
   width: 100%;
 }
 
@@ -115,7 +118,7 @@
 }
 
 .question-header{
-  color: #464e55;
+  color: inherit$darker-grey;
   align: center;
   width:100%;
   max-width:1080px;

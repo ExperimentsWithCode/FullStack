@@ -1,3 +1,5 @@
+@import "variables";
+
 .data-reactroot{
   width:100%;
   position: fixed;
@@ -26,8 +28,8 @@
     height: 60px;
     z-index: 998;
     &.fixed{
-      background-color:#fafafb;
-      border-top:3px solid #F48024;
+      background-color:$lightest-grey;
+      border-top:3px solid $theme-color;
       box-sizing: border-box;
       position:fixed;
       z-index: 999;
@@ -42,9 +44,9 @@
 
 .button-session{
   margin-right: 3%;
-  background: #07C;
+  background: $blue;
   font-weight: bold;
-  color: #FFF;
+  color: $white;
   // width: 120px;
   padding: 12px ;
   border-style:none;
@@ -59,7 +61,7 @@
     width:auto;
   }
   &.special{
-    background: #F48024;
+    background: $theme-color;
   }
 }
 
@@ -85,7 +87,7 @@
 }
 
 .extended-header{
-  color: #464e55;
+  color: $darker-grey;
   align: center;
   width:90%;
   max-width:1080px;
@@ -93,7 +95,7 @@
   margin: 40px auto;
   text-align: center;
   box-sizing: border-box;
-  border: 1px solid #F48024;
+  border: 1px solid $theme-color;
   &.content {
     border-style: none;
     width: 400px;
@@ -106,7 +108,7 @@
 
 .separator{
   width: 25px;
-  border-bottom: 3px solid #464e55;
+  border-bottom: 3px solid $darker-grey;
   margin: 10px auto;
   display:block;
 }
@@ -136,10 +138,10 @@
   padding-left: 10px;
   height: 36px;
   border-radius: 2px;
-  color: #6a737c;
+  color: $dark-grey;;
   width: 20%;
   transition: width 500ms;
-  border: 1px solid #c8ccd0;
+  border: 1px solid $light-grey;
   font-size: 14px;
 }
 
@@ -159,6 +161,6 @@
   margin-right:10px;
   // border-bottom:2px solid black;
   // border-left:2px solid black;
-  // background-color: #F48024;
-  // border:2px dotted #F48024;
+  // background-color: $theme-color;
+  // border:2px dotted $theme-color;
 }

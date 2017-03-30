@@ -9,7 +9,13 @@ Inspired by Stack Overflow, HeapSpill seeks to allows users to solve problems en
 
 ###Features
 * Sign up/in with email
-* Ask Questions
-* Answer Questions
-* Vote on Answers
-* Sort Questions
+* Ask/Edit questions
+* Answer questions
+* Vote on answers
+* Sort questions
+* Fuzzy search
+
+
+
+
+request.send(JSON.stringify(body));

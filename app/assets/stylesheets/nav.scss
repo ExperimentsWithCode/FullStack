@@ -1,3 +1,5 @@
+@import "variables";
+
 
 .tabs{
   height:auto;
@@ -8,15 +10,15 @@
 .tab{
   padding: 15px 10px;
   cursor: pointer;
-  color:#848d95;
+  color:  $inactive-tab;
   border: 2px solid;
   border-color: transparent;
   font-size: 12px;
   &.active{
-    border-color:#e4e6e8;
-    border-top:2px solid #f69c55;
+    border-color:$lighter-grey;
+    border-top:2px solid $upvote-orange;
     border-bottom-color: white;
-    color:#242729;
+    color:$darkest-grey;
   }
 }
 
@@ -26,7 +28,7 @@
   align-items:flex-end;
   justify-content:space-between;
   flex-direction: row;
-  border-bottom:2px solid #e4e6e8;
+  border-bottom:2px solid $lighter-grey;
   &.side{
     border:none;
   }
