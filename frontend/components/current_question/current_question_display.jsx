@@ -64,7 +64,7 @@ class CurrentQuestionDisplay extends React.Component {
 		return (
       <div className="question-display">
         <div className="question-display-content">
-					
+					{ this.renderVotes(this.state.currentQuestion, "Q")}
           <p>{this.state.currentQuestion.body}</p>
         </div>
         <div className="question-display-content">
@@ -120,18 +120,23 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	handleVote(e) {
+		debugger
 		// e.preventDefault();
 		let id = e.currentTarget.attributes.value.value.slice(1)
 		let type
 		let val
+		let subject
+		let currentQuestion = this.state.currentQuestion
+		let func = (subject) => (subject.id == id)
 		if (e.currentTarget.attributes.value.value.slice(0,1) == 'Q'){
 			type = "Question"
-		} else {type = "Answer"}
-		let func = (answer) => (answer.id == id)
-		let currentQuestion = this.state.currentQuestion
-		let answer = currentQuestion.answers.find(func);
+			subject = currentQuestion
+		} else {
+			type = "Answer"
+			subject = currentQuestion.answers.find(func);
+		}
 		let func2 = (vote) => (this.props.current_user.id == vote.user_id)
-		let vote = answer.votes.find(func2)
+		let vote = subject.votes.find(func2)
 		if (e.currentTarget.attributes.class.value === "upvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "1"
@@ -139,7 +144,7 @@ class CurrentQuestionDisplay extends React.Component {
 		} else if (e.currentTarget.attributes.class.value === "downvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "-1"
-			this.props.create({votable_id: id, votable_type: 'Answer', user_id: this.props.current_user.id, value: val })
+			this.props.create({votable_id: id, votable_type: type, user_id: this.props.current_user.id, value: val })
 		} else {
 
 			this.props.destroy(vote)

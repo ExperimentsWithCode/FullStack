@@ -19,7 +19,7 @@ class Api::AnswersController < ApplicationController
 	end
 
 	def index
-		@answers = Answer.all
+		@answers = Answer.all.includes(:author, :votes).order('created_at asc')
 		render :index
 	end
 
