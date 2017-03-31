@@ -9,3 +9,4 @@ if tempQuestion
 else
   json.last_active DateTime.new(0, 1, 1, 1, 1)
 end
+json.vote_count  question.votes.sum(:value)

@@ -1,6 +1,5 @@
 class Vote < ActiveRecord::Base
-  validates :user_id, :answer_id, presence: true
-
+  validates :user_id, :votable_id, :votable_type, presence: true
 
   belongs_to(
   :user,
@@ -10,9 +9,7 @@ class Vote < ActiveRecord::Base
   )
 
   belongs_to(
-  :answer,
-  class_name: "Answer",
-  foreign_key: :answer_id,
-  primary_key: :id
+  :votable,
+  polymorphic: true
   )
 end

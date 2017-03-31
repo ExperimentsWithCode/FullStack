@@ -88,6 +88,25 @@
   margin-right: 20px;
   width:46px;
 }
+
+.question-stat{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: column;
+  padding: 5px;
+  // margin-bottom:3px;
+  width:46px;
+  &.answered{
+    color:$green;
+    border: 1px solid $green;
+  }
+  &.accepted{
+    color:$white;
+    background-color: $green;
+  }
+}
+
 .question-summary{
   width: 100%;
   display:flex;
@@ -107,7 +126,7 @@
 }
 
 .list-view-score{
-  font-size: 22px;
+  font-size: 18px;
   padding:0;
   margin: 0;
 }
