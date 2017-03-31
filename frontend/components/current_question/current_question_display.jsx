@@ -17,6 +17,7 @@ class CurrentQuestionDisplay extends React.Component {
 		this.route = this.props.routeParams.wildcard
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 		this.handleVote = this.handleVote.bind(this)
+		this.renderVotes = this.renderVotes.bind(this)
 	}
 
 	componentDidMount(){
@@ -63,10 +64,7 @@ class CurrentQuestionDisplay extends React.Component {
 		return (
       <div className="question-display">
         <div className="question-display-content">
-          <div className="question-stat-bar">
-            <span className="list-view-score">{this.state.currentQuestion.answers.length}</span>
-            <span className="list-view-label">answers</span>
-          </div>
+					{ this.renderVotes(this.state.currentQuestion, "Q")}
           <p>{this.state.currentQuestion.body}</p>
         </div>
         <div className="question-display-content">
@@ -122,22 +120,31 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	handleVote(e) {
+		debugger
 		// e.preventDefault();
-		let id = e.currentTarget.attributes.value.value
+		let id = e.currentTarget.attributes.value.value.slice(1)
+		let type
 		let val
-		let func = (answer) => (answer.id == id)
+		let subject
 		let currentQuestion = this.state.currentQuestion
-		let answer = currentQuestion.answers.find(func);
+		let func = (subject) => (subject.id == id)
+		if (e.currentTarget.attributes.value.value.slice(0,1) == 'Q'){
+			type = "Question"
+			subject = currentQuestion
+		} else {
+			type = "Answer"
+			subject = currentQuestion.answers.find(func);
+		}
 		let func2 = (vote) => (this.props.current_user.id == vote.user_id)
-		let vote = answer.votes.find(func2)
+		let vote = subject.votes.find(func2)
 		if (e.currentTarget.attributes.class.value === "upvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "1"
-			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
+			this.props.create({votable_id: id, votable_type: type, user_id: this.props.current_user.id, value: val })
 		} else if (e.currentTarget.attributes.class.value === "downvote"){
 			if (vote !== undefined) { this.props.destroy(vote) }
 			val = "-1"
-			this.props.create({answer_id: id, user_id: this.props.current_user.id, value: val })
+			this.props.create({votable_id: id, votable_type: type, user_id: this.props.current_user.id, value: val })
 		} else {
 
 			this.props.destroy(vote)
@@ -152,18 +159,7 @@ class CurrentQuestionDisplay extends React.Component {
 			if (this.state.currentQuestion.answers.length !== undefined ) {
 				const lineItems = this.state.currentQuestion.answers.map( (answer) => (
 					<li className="questions-list-item" key={answer.id}>
-						<div className="question-stat-bar">
-							<button className={`upvote${this.voted(answer, 1)}${
-									this.props.current_user === null ? " disabled" : ""}`}
-									disabled={this.props.current_user === null}
-									onClick={this.handleVote} value={answer.id}></button>
-							<span className="list-view-score">{answer.vote_count}</span>
-							<span className="list-view-label">Votes</span>
-							<button className={`downvote${this.voted(answer, -1)}${
-									this.props.current_user === null ? " disabled" : ""}`}
-									disabled={this.props.current_user === null}
-									onClick={this.handleVote} value={answer.id} ></button>
-						</div>
+						{ this.renderVotes(answer, "A")}
 						<div className="question-summary">
 							<p>{answer.body}</p>
 							{ AuthorBoxDisplay(answer.author, answer.created_at, true )}
@@ -178,6 +174,21 @@ class CurrentQuestionDisplay extends React.Component {
 			}
 			else return (<p> Loading... </p>)
 	}
+
+	renderVotes(subject, type){
+		return (
+		<div className="question-stat-bar">
+			<button className={`upvote${this.voted(subject, 1)}${
+					this.props.current_user === null ? " disabled" : ""}`}
+					disabled={this.props.current_user === null}
+					onClick={this.handleVote} value={`${type+subject.id.toString()}`}></button>
+			<span className="list-view-score">{subject.vote_count}</span>
+			<button className={`downvote${this.voted(subject, -1)}${
+					this.props.current_user === null ? " disabled" : ""}`}
+					disabled={this.props.current_user === null}
+					onClick={this.handleVote} value={`${type+subject.id.toString()}`} ></button>
+		</div>
+	)}
 
 
 	renderAnswerForm(){

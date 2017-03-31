@@ -19,9 +19,7 @@ class Answer < ActiveRecord::Base
 
   has_many(
   :votes,
-  class_name: "Vote",
-  foreign_key: :answer_id,
-  primary_key: :id
+  as: :votable
   )
 
 end

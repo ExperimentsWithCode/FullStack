@@ -7,6 +7,7 @@ export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_QUESTION_ERRORS = "RECEIVE_QUESTION_ERRORS";
 export const SORT_QUESTIONS_NEWEST = "SORT_QUESTIONS_NEWEST"
 export const SORT_QUESTIONS_ACTIVE = "SORT_QUESTIONS_ACTIVE"
+export const SORT_QUESTIONS_VOTES = "SORT_QUESTIONS_VOTES"
 
 
 
@@ -71,5 +72,9 @@ export const sortQuestionsActive = errors => {
 }
 export const sortQuestionsNewest = errors => ({
   type: SORT_QUESTIONS_NEWEST,
+  errors
+});
+export const sortQuestionsVotes = errors => ({
+  type: SORT_QUESTIONS_VOTES,
   errors
 });

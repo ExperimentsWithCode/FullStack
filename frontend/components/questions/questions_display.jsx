@@ -28,12 +28,15 @@ class QuestionsDisplay extends React.Component {
 
 
 	componentDidUpdate() {
+		debugger
 		if (this.props.routeParams.wildcard !== this.route){
 			this.route = this.props.routeParams.wildcard
 			if (this.props.routeParams.wildcard === 'active'){
 				this.props.sortQuestionsActive()
 			} else if (this.props.routeParams.wildcard === 'newest'){
 				this.props.sortQuestionsNewest()
+			} else if (this.props.routeParams.wildcard === 'votes'){
+				this.props.sortQuestionsVotes()
 			}
 		} else if (this.props.routeParams.query !== this.query){
 				this.query = this.props.routeParams.query

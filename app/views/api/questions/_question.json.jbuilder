@@ -5,3 +5,7 @@ end
 json.answers do
   json.array! question.answers, partial: 'api/answers/answer', as: :answer
 end
+json.vote_count  question.votes.sum(:value)
+json.votes do
+  json.array! question.votes, partial: 'api/votes/vote', as: :vote
+end

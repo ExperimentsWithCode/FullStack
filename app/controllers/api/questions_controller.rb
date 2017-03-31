@@ -22,9 +22,9 @@ class Api::QuestionsController < ApplicationController
 
 	def index
 		if params['query'] == "false"
-			@questions = Question.all.includes(:author, :answers).order('created_at desc')
+			@questions = Question.all.includes(:author, :answers, :votes).order('created_at desc')
 		else
-			@questions = Question.search(params['query']).includes(:author, :answers).order('created_at desc')
+			@questions = Question.search(params['query']).includes(:author, :answers, :votes).order('created_at desc')
 		end
 		render :index
 	end
