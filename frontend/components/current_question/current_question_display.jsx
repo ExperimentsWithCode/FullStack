@@ -120,7 +120,6 @@ class CurrentQuestionDisplay extends React.Component {
 
 
 	handleVote(e) {
-		debugger
 		// e.preventDefault();
 		let id = e.currentTarget.attributes.value.value.slice(1)
 		let type

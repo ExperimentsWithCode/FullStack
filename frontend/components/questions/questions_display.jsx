@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 import { MainNavDisplay } from '../nav/main_nav_display';
 import { SideNavDisplay } from '../nav/side_nav_display';
+import { BulletinDisplay } from '../bulletin/bulletin_display';
 import QuestionLineItem  from './question_line_item';
 
 class QuestionsDisplay extends React.Component {
@@ -28,7 +29,6 @@ class QuestionsDisplay extends React.Component {
 
 
 	componentDidUpdate() {
-		debugger
 		if (this.props.routeParams.wildcard !== this.route){
 			this.route = this.props.routeParams.wildcard
 			if (this.props.routeParams.wildcard === 'active'){
@@ -81,6 +81,7 @@ class QuestionsDisplay extends React.Component {
 					</div>
 					<div className="side-content">
 						<SideNavDisplay questions={this.state.questions} />
+						<BulletinDisplay />
 					</div>
         </div>
       </div>
