@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 
-const posLocations = ['active', 'newest']
+const posLocations = ['active', 'newest', 'votes']
 
 const activeLink = ({currentLocation, linkPath}) => {
 	let clSplit = currentLocation.split("/")
 	let reducedLocation = clSplit[clSplit.length-1]
+	debugger
 	if (linkPath === reducedLocation){
 		return " active";
 	} else if ("" === reducedLocation){
@@ -35,7 +36,8 @@ export const MainNavDisplay = ({currentLocation}) => {  //newest, active, featur
 	let reducedLocation = currentLocationReudcer(currentLocation)
 	return (
 		<div className="tabs">
-			<Link to={`${reducedLocation}/newest`}className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
+			<Link to={`${reducedLocation}/newest`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
+			<Link to={`${reducedLocation}/votes`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "votes"})}`}>votes</Link>
 			<Link to={`${reducedLocation}/active`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
 		</div>
 	);
