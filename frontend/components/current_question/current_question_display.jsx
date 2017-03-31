@@ -7,6 +7,7 @@ import { AnswerNavDisplay } from '../nav/answer_nav_display';
 import AnswerFormContainer from '../answer_form/answer_form_container';
 import { headerLoggedOut } from '../header/header_display';
 import AnswerLineItem from './answer_line_item';
+import { BulletinDisplay } from '../bulletin/bulletin_display';
 
 
 class CurrentQuestionDisplay extends React.Component {
@@ -18,6 +19,7 @@ class CurrentQuestionDisplay extends React.Component {
 		this.selfQuestionTools = this.selfQuestionTools.bind(this);
 		this.handleVote = this.handleVote.bind(this)
 		this.renderVotes = this.renderVotes.bind(this)
+		this.last_active = this.state.currentQuestion.created_at
 	}
 
 	componentDidMount(){
@@ -44,13 +46,6 @@ class CurrentQuestionDisplay extends React.Component {
 			}
 		}
 	}
-
-
-
-
-  formatDate(theDate){
-    return `asked ${FormatDate(theDate)}`;
-  }
 
 	selfQuestionTools(){
 
@@ -210,7 +205,8 @@ class CurrentQuestionDisplay extends React.Component {
 	}
 
 	render() {
-		if (this.state.currentQuestion && String(this.state.currentQuestion.id) === this.props.params.id ){
+		if (this.state.currentQuestion &&
+			 String(this.state.currentQuestion.id) === this.props.params.id ){
 			return (
 	      <div className="container">
 	        {this.renderQuestionHeader()}
@@ -224,6 +220,13 @@ class CurrentQuestionDisplay extends React.Component {
 							{this.renderAnswerForm()}
 						</div>
 						<div className="side-content">
+						  <span className="catagory">asked<span className="data">
+								{`${FormatDate(this.state.currentQuestion.created_at)}`}
+							</span></span>
+							<span className="catagory">active<span className="data">
+								{`${FormatDate(this.state.currentQuestion.last_active)}`}
+							</span></span>
+							<BulletinDisplay />
 						</div>
 	        </div>
 	      </div>

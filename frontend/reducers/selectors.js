@@ -22,7 +22,7 @@ const votes = (q1, q2) => {
     else {return 0}
   }
 
-const active = (q1, q2) => {
+export const active = (q1, q2) => {
     let l1 = new Date(q1.last_active)
     let l2 = new Date(q1.created_at)
     let r1 = new Date(q2.last_active)
