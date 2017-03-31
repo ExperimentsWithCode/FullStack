@@ -14,6 +14,14 @@ const newest = (q1, q2) => {
     else {return 0}
   }
 
+const votes = (q1, q2) => {
+    let left = q1.vote_count;
+    let right = q2.vote_count;
+    if (left < right){return 1}
+    else if (left > right){return -1}
+    else {return 0}
+  }
+
 const active = (q1, q2) => {
     let l1 = new Date(q1.last_active)
     let l2 = new Date(q1.created_at)
@@ -27,6 +35,7 @@ const active = (q1, q2) => {
     else if (left > right){return -1}
     else {return 0}
   }
+
 
 
 export const selectAllQuestions = (questions, type ) => {
@@ -45,6 +54,8 @@ const determineSortTypeQ = (type) => {
     sortMethod = newest
   } else if (type === "active"){
     sortMethod = active
+  } else if (type === "votes"){
+      sortMethod = votes
   } else { sortMethod = newest }
   return sortMethod
 }

@@ -183,7 +183,6 @@ class CurrentQuestionDisplay extends React.Component {
 					disabled={this.props.current_user === null}
 					onClick={this.handleVote} value={`${type+subject.id.toString()}`}></button>
 			<span className="list-view-score">{subject.vote_count}</span>
-			<span className="list-view-label">Votes</span>
 			<button className={`downvote${this.voted(subject, -1)}${
 					this.props.current_user === null ? " disabled" : ""}`}
 					disabled={this.props.current_user === null}

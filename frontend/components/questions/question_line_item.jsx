@@ -7,8 +7,15 @@ const QuestionLineItem = ({ question, router }) => {
   return (
   <li className="questions-list-item">
     <div className="question-stat-bar">
-      <span className="list-view-score">{question.answer_count}</span>
-      <span className="list-view-label">answers</span>
+      <div className="question-stat">
+        <span className="list-view-score">{question.vote_count}</span>
+        <span className="list-view-label">votes</span>
+      </div>
+      <div className={`question-stat${
+          question.answer_count > 0 ? " answered" : ""}`}>
+        <span className="list-view-score">{question.answer_count}</span>
+        <span className="list-view-label">answers</span>
+      </div>
     </div>
     <div className="question-summary">
       <Link to={`/question/${question.id}`}>
