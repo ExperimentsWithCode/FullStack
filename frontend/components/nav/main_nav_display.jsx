@@ -6,7 +6,6 @@ const posLocations = ['active', 'newest', 'votes']
 const activeLink = ({currentLocation, linkPath}) => {
 	let clSplit = currentLocation.split("/")
 	let reducedLocation = clSplit[clSplit.length-1]
-	debugger
 	if (linkPath === reducedLocation){
 		return " active";
 	} else if ("" === reducedLocation){
