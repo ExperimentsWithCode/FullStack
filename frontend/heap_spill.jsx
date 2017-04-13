@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
-window.store = configureStore();
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {

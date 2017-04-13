@@ -8,6 +8,7 @@ export const RECEIVE_QUESTION_ERRORS = "RECEIVE_QUESTION_ERRORS";
 export const SORT_QUESTIONS_NEWEST = "SORT_QUESTIONS_NEWEST"
 export const SORT_QUESTIONS_ACTIVE = "SORT_QUESTIONS_ACTIVE"
 export const SORT_QUESTIONS_VOTES = "SORT_QUESTIONS_VOTES"
+export const SORT_QUESTIONS = "SORT_QUESTIONS"
 
 
 
@@ -35,11 +36,13 @@ export const show = currentQuestion => dispatch => (
       err => dispatch(receiveQuestionErrors(err.responseJSON)))
 );
 
-export const destroy = currentQuestion => dispatch => (
-  APIUtil.destroy(currentQuestion)
-    .then(currentQuestion => dispatch(receiveCurrentQuestion(currentQuestion)),
-      err => dispatch(receiveQuestionErrors(err.responseJSON)))
-);
+export const destroyQ = currentQuestion => dispatch => {
+  return (
+    APIUtil.destroy(currentQuestion)
+      .then(currentQuestion => dispatch(receiveCurrentQuestion(currentQuestion)),
+        err => dispatch(receiveQuestionErrors(err.responseJSON)))
+    );
+};
 
 export const receiveCurrentQuestion = currentQuestion => {
   return {
@@ -66,15 +69,15 @@ export const receiveQuestionErrors = errors => ({
 export const sortQuestionsActive = errors => {
   return (
   {
-    type: SORT_QUESTIONS_ACTIVE,
-    errors
+    type: SORT_QUESTIONS,
+    sort: 'active'
   });
 }
 export const sortQuestionsNewest = errors => ({
-  type: SORT_QUESTIONS_NEWEST,
-  errors
+  type: SORT_QUESTIONS,
+  sort: 'newest'
 });
 export const sortQuestionsVotes = errors => ({
-  type: SORT_QUESTIONS_VOTES,
-  errors
+  type: SORT_QUESTIONS,
+  sort: 'votes'
 });

@@ -1,7 +1,6 @@
 import { RECEIVE_QUESTIONS, RECEIVE_CURRENT_QUESTION,
   REMOVE_CURRENT_QUESTION, RECEIVE_QUESTION_ERRORS,
-  SORT_QUESTIONS_ACTIVE, SORT_QUESTIONS_NEWEST,
-  SORT_QUESTIONS_VOTES } from '../actions/question_actions';
+  SORT_QUESTIONS } from '../actions/question_actions';
 import {
     SORT_ANSWERS_OLDEST,
     SORT_ANSWERS_VOTES,
@@ -38,16 +37,11 @@ const QuestionsReducer = (state = _nullQuestion, action) => {
     case REMOVE_CURRENT_QUESTION:
       return merge({}, state);
     case RECEIVE_QUESTION_ERRORS:
-      const errors = action.errors;
-      return merge({}, state, {
-        errors
-      });
-    case SORT_QUESTIONS_ACTIVE:
-      return {questions: selectAllQuestions(state, "active")}
-    case SORT_QUESTIONS_VOTES:
-      return {questions: selectAllQuestions(state, "votes")}
-    case SORT_QUESTIONS_NEWEST:
-      return {questions: selectAllQuestions(state, "newest")}
+      tempState = merge({}, state)
+      tempState.errors = action.errors
+      return tempState
+    case SORT_QUESTIONS:
+      return {questions: selectAllQuestions(state, action.sort)}
     case SORT_ANSWERS_ACTIVE:
       tempState = merge({}, state)
       tempState.currentQuestion.answers = selectAllAnswers(state, "active")

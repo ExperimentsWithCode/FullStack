@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { create, update } from '../../actions/question_actions';
+import { create, update, show } from '../../actions/question_actions';
 import AskQuestionDisplay from './ask_question_display';
 import { selectAllQuestions } from '../../reducers/selectors.js';
 
@@ -17,8 +17,8 @@ const mapStateToProps = ({ session, questions }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   create:  (currentQuestion) => dispatch(create(currentQuestion)),
-  update:  (currentQuestion) => dispatch(update(currentQuestion))
-
+  update:  (currentQuestion) => dispatch(update(currentQuestion)),
+  show: (id) => dispatch(show(id)),
 });
 
 export default connect(

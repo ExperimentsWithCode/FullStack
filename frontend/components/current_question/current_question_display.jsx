@@ -20,6 +20,8 @@ class CurrentQuestionDisplay extends React.Component {
 		this.handleVote = this.handleVote.bind(this)
 		this.renderVotes = this.renderVotes.bind(this)
 		this.last_active = this.state.currentQuestion.created_at
+		this.deleteQuestion = this.deleteQuestion.bind(this)
+		this.extractVote = this.extractVote.bind(this)
 	}
 
 	componentDidMount(){
@@ -52,8 +54,18 @@ class CurrentQuestionDisplay extends React.Component {
 		if (this.props.current_user === null || this.props.current_user.id !== this.state.currentQuestion.author.id ){
 			return <div></div>
 		}
-		return <Link to={`/ask/${this.props.params.id}`}>Edit</Link>
+		return <div>
+						<Link to={`/ask/${this.props.params.id}`}>Edit</Link>
+						&nbsp;&nbsp;&nbsp;
+					 	<Link to={`/`} onClick={this.deleteQuestion} >Delete</Link>
+					</div>
 
+	}
+
+	deleteQuestion(e) {
+		e.preventDefault();
+		this.props.destroyQ(this.state.currentQuestion)
+		this.props.router.push("/");
 	}
 	renderQuestion() {
 		return (
@@ -113,42 +125,47 @@ class CurrentQuestionDisplay extends React.Component {
 		return user_voted ? " active" : "";
 	}
 
+	extractVote({type, id}){
+		let subject
+		let funcVote = (vote) => (this.props.current_user.id == vote.user_id)
+		if (type === 'Question'){
+			subject = this.state.currentQuestion
+		} else {
+			let funcAnswer = (subject) => (subject.id == id)
+			subject = this.state.currentQuestion.answers.find(funcAnswer);
+		}
+		return subject.votes.find(funcVote)
+	}
+
+	extractVoteObject(e){
+		let subject
+		const voteTypes = {'A': 'Answer', 'Q': 'Question'}
+		const voteVals = {'upvote': 1, 'downvote': -1,
+			'upvote active': 0, 'downvote active': 0}
+		const voteSubjects = {}
+		let voteData = {}
+		voteData['id'] = e.currentTarget.attributes.value.value.slice(1)
+		voteData['type'] = voteTypes[ e.currentTarget.attributes.value.value.slice(0,1) ]
+		voteData['val'] = voteVals[e.currentTarget.attributes.class.value]
+		voteData['vote'] = this.extractVote(voteData)
+		return voteData
+	}
+
+	placeVote({id, type, val, vote}){
+		this.props.create({votable_id: id, votable_type: type,
+			user_id: this.props.current_user.id, value: val })
+	}
 
 	handleVote(e) {
-		// e.preventDefault();
-		let id = e.currentTarget.attributes.value.value.slice(1)
-		let type
-		let val
-		let subject
-		let currentQuestion = this.state.currentQuestion
-		let func = (subject) => (subject.id == id)
-		if (e.currentTarget.attributes.value.value.slice(0,1) == 'Q'){
-			type = "Question"
-			subject = currentQuestion
-		} else {
-			type = "Answer"
-			subject = currentQuestion.answers.find(func);
+		let voteData = this.extractVoteObject(e)
+		if (voteData['vote'] !== undefined) { this.props.destroyV(voteData['vote']) }
+		if (voteData['val'] !== 0){
+			this.placeVote(voteData)
 		}
-		let func2 = (vote) => (this.props.current_user.id == vote.user_id)
-		let vote = subject.votes.find(func2)
-		if (e.currentTarget.attributes.class.value === "upvote"){
-			if (vote !== undefined) { this.props.destroy(vote) }
-			val = "1"
-			this.props.create({votable_id: id, votable_type: type, user_id: this.props.current_user.id, value: val })
-		} else if (e.currentTarget.attributes.class.value === "downvote"){
-			if (vote !== undefined) { this.props.destroy(vote) }
-			val = "-1"
-			this.props.create({votable_id: id, votable_type: type, user_id: this.props.current_user.id, value: val })
-		} else {
-
-			this.props.destroy(vote)
-		}
-		this.props.show(currentQuestion.id)
+		this.props.show(this.state.currentQuestion.id)
 	}
-// e.preventDefault();
-// e.currentTarget.attributes.class.value
-// e.currentTarget.attributes.value.value
-// x = this.state.currentQuestion.answers.find((answer, id)=> answer.id === id)
+
+
 	renderAnswersList() {
 			if (this.state.currentQuestion.answers.length !== undefined ) {
 				const lineItems = this.state.currentQuestion.answers.map( (answer) => (

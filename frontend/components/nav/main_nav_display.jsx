@@ -13,7 +13,6 @@ const activeLink = ({currentLocation, linkPath}) => {
 			return " active";
 		}
 	} else if (!posLocations.includes(reducedLocation)){
-
 		if (linkPath === "newest" ){
 			return " active";
 		}
@@ -35,9 +34,12 @@ export const MainNavDisplay = ({currentLocation}) => {  //newest, active, featur
 	let reducedLocation = currentLocationReudcer(currentLocation)
 	return (
 		<div className="tabs">
-			<Link to={`${reducedLocation}/newest`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
-			<Link to={`${reducedLocation}/votes`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "votes"})}`}>votes</Link>
-			<Link to={`${reducedLocation}/active`} className={`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
+			<Link to={`${reducedLocation}/newest`} className=
+				{`tab${activeLink({currentLocation:currentLocation, linkPath: "newest"})}`}>newest</Link>
+			<Link to={`${reducedLocation}/votes`} className=
+				{`tab${activeLink({currentLocation:currentLocation, linkPath: "votes"})}`}>votes</Link>
+			<Link to={`${reducedLocation}/active`} className=
+				{`tab${activeLink({currentLocation:currentLocation, linkPath: "active"})}`}>active</Link>
 		</div>
 	);
 }
