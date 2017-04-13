@@ -9,15 +9,18 @@ class AskQuestionDisplay extends React.Component {
 		this.navigateToIndex = this.navigateToIndex.bind(this);
 	}
 
-	componentWillReceiveProps(newProps){
-		if (newProps.route.path === "/ask"){
-			this.state = { title: "", body: "", author_id: this.props.current_user.id };
-		} else if (newProps.currentQuestion.author_id === this.props.current_user.id ){
-			this.state = newProps.currentQuestion;
+	componentDidMount(){
+		if (this.props.routeParams.id != undefined){
+			this.props.show(this.props.params.id);
 		}
 	}
 
-	componentDidUpdate() {
+	componentWillReceiveProps(newProps){
+		if (newProps.route.path === "/ask"){
+			this.state.author_id = this.props.current_user.id ;
+		} else if (newProps.currentQuestion.author_id === this.props.current_user.id ){
+			this.state = newProps.currentQuestion;
+		}
 	}
 
 	ensureLoggedIn() {
@@ -68,16 +71,23 @@ class AskQuestionDisplay extends React.Component {
 	renderSubmit() {
 		if (this.props.route.path === "/ask"){
 			return (
-				<input type="submit" value="Post Your Question"
-					className="submit question"/>)
+				<div className='session-form-buttons'>
+					<input type="submit" value="Post Your Question"
+						className="submit question"/>
+					<Link to={`/`}
+						className="submit special">Cancel</Link>
+				</div>)
 		} else return (
+			<div className='session-form-buttons'>
 			<input type="submit" value="Update Your Question"
-				className="submit question"/>)
+				className="submit question"/>
+			<Link to={`/question/${this.state.id}`}
+				className="submit special">Cancel</Link>
+			</div>)
 	};
 
 	render() {
 		return (
-
       <div className="container">
 				<div className="split-content">
 	        <form onSubmit={this.handleSubmit} className="main-content">
@@ -90,10 +100,13 @@ class AskQuestionDisplay extends React.Component {
 						</div>
 
 						<div className="question-body-input" >
-							<textarea className="question-body-textarea" rows="10" onChange={this.update("body")} value={this.state.body}>
+							<textarea className="question-body-textarea" rows="10"
+								onChange={this.update("body")} value={this.state.body}>
 							</textarea>
 						</div>
+						<div className='session-form-buttons'>
 						{ this.renderSubmit() }
+						</div>
 	        </form>
 	      </div>
       </div>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { show } from '../../actions/question_actions';
-import { create, destroy } from '../../actions/vote_actions';
+import { show, destroyQ} from '../../actions/question_actions';
+import { create, destroyV } from '../../actions/vote_actions';
 import { sortAnswersActive,
   sortAnswersOldest,
   sortAnswersVotes } from '../../actions/answer_actions';
@@ -22,8 +22,9 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     show: (id) => dispatch(show(id)),
+    destroyQ: (currentQuestion) => dispatch(destroyQ(currentQuestion)),
     create: (vote) => dispatch(create(vote)),
-    destroy: (vote) => dispatch(destroy(vote)),
+    destroyV: (vote) => dispatch(destroyV(vote)),
     sortAnswersActive: () => dispatch(sortAnswersActive()),
     sortAnswersOldest: () => dispatch(sortAnswersOldest()),
     sortAnswersVotes: () => dispatch(sortAnswersVotes()),

@@ -29,6 +29,7 @@ p{
   border-radius: 6px;
   border-style:none;
   font-size: 13px;
+  cursor: pointer;
   &.special{
     background: $theme-color;
   }
