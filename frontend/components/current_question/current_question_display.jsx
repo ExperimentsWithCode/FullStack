@@ -10,6 +10,12 @@ import AnswerLineItem from './answer_line_item';
 import { BulletinDisplay } from '../bulletin/bulletin_display';
 
 
+const voteTypes = {'A': 'Answer', 'Q': 'Question'}
+const voteVals = {'upvote': 1, 'downvote': -1,
+	'upvote active': 0, 'downvote active': 0}
+
+
+
 class CurrentQuestionDisplay extends React.Component {
 	constructor(props) {
 		super(props);
@@ -127,21 +133,18 @@ class CurrentQuestionDisplay extends React.Component {
 
 	extractVote({type, id}){
 		let subject
-		let funcVote = (vote) => (this.props.current_user.id == vote.user_id)
+		let getVote = (vote) => (this.props.current_user.id == vote.user_id)
 		if (type === 'Question'){
 			subject = this.state.currentQuestion
 		} else {
-			let funcAnswer = (subject) => (subject.id == id)
-			subject = this.state.currentQuestion.answers.find(funcAnswer);
+			let getAnswer = (subject) => (subject.id == id)
+			subject = this.state.currentQuestion.answers.find(getAnswer);
 		}
-		return subject.votes.find(funcVote)
+		return subject.votes.find(getVote)
 	}
 
 	extractVoteObject(e){
 		let subject
-		const voteTypes = {'A': 'Answer', 'Q': 'Question'}
-		const voteVals = {'upvote': 1, 'downvote': -1,
-			'upvote active': 0, 'downvote active': 0}
 		const voteSubjects = {}
 		let voteData = {}
 		voteData['id'] = e.currentTarget.attributes.value.value.slice(1)
@@ -253,7 +256,3 @@ class CurrentQuestionDisplay extends React.Component {
 }
 
 export default withRouter(CurrentQuestionDisplay);
-
-
-// {location.hash.slice(2).includes("") ? "All Questions" : "Unanswered"}
-//
