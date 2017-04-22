@@ -1,5 +1,3 @@
-import { receiveCurrentUser, receiveQuestionErrors } from '../actions/session_actions';
-
 export const index = (query) => {
   query = query ? query : false
   return $.ajax({
